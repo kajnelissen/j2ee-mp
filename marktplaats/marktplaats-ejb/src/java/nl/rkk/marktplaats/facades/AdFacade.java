@@ -29,4 +29,11 @@ public class AdFacade extends AbstractFacade<Ad> implements AdFacadeLocal {
         super(Ad.class);
     }
     
+    public void create(String titel){
+    
+        Ad ad = new Ad();
+        
+        ad.setTitle(titel);
+        this.create(ad);
+    }
 }

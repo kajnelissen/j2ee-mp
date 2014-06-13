@@ -31,4 +31,6 @@ public interface AdFacadeLocal {
 
     int count();
     
+    void create(String titel);
+    
 }
