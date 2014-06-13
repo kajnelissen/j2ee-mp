@@ -8,16 +8,21 @@ package nl.rkk.marktplaats.servlets.ads;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import nl.rkk.marktplaats.facades.AdFacadeLocal;
 
 /**
  *
  * @author Kaj
  */
 public class AddAdServlet extends HttpServlet {
+    
+    @EJB
+    private AdFacadeLocal ads;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +62,9 @@ public class AddAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
     }
 
     /**
@@ -71,7 +78,17 @@ public class AddAdServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       //processRequest(request, response);
+        
+         String title= request.getParameter("titel");
+         
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println(title);
+        }
+         
+        // ads.create();
+        
     }
 
     /**
