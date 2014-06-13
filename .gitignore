@@ -10,3 +10,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/marktplaats/nbproject/private/
+/marktplaats/marktplaats-war/nbproject/private/
+/marktplaats/marktplaats-ejb/nbproject/private/
+/marktplaats/marktplaats-ejb/build/
+/marktplaats/marktplaats-ejb/dist/
+/marktplaats/marktplaats-war/build/
+/marktplaats/build/
+/marktplaats/marktplaats-war/dist/
