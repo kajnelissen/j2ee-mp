@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * @author Kaj
  */
 @Entity
-@Table(name = "users")
+//@Table(name = "users")
 public class MyUser implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -36,6 +36,15 @@ public class MyUser implements Serializable {
     private String password;
     
     //private UserRole type;
+    
+    public MyUser() {
+        
+    }
+    
+    public MyUser(String email, String password) {
+        this.setEmail(email);
+        this.setPassword(password);
+    }
 
     public Integer getId() {
         return id;

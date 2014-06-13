@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet {
         //processRequest(request, response);
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        MyUser user = users.find(email, BCrypt.hashpw(password, BCrypt.gensalt()));
+        //MyUser user = users.find(email, BCrypt.hashpw(password, BCrypt.gensalt()));
         
         getServletContext().getRequestDispatcher("/index.html").forward(request, response);  
     }

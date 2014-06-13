@@ -13,8 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
-import nl.rkk.marktplaats.models.*;
+import nl.rkk.marktplaats.models.MyUser;
 //import nl.rkk.marktplaats.models.UserRole;
 
 /**
@@ -80,11 +81,16 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        MyUser user = new MyUser();
-        user.setEmail(request.getParameter("email"));
-        user.setPassword(BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt()));
+        //try (PrintWriter out = response.getWriter()) {
+            PrintWriter out = response.getWriter();
+            int count = users.count();
+            out.println(count);
+        //}
+        
+        String email = request.getParameter("email");
+        String password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
         //user.setType(UserRole.User);
-        users.create(user);
+        users.create(email, password);
         
         // registered user, proceed to login page
         getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   

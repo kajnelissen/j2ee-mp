@@ -31,6 +31,6 @@ public interface MyUserFacadeLocal {
 
     int count();
     
-    MyUser find(String email, String password);
+    boolean create(String email, String password);
     
 }

@@ -8,8 +8,6 @@ package nl.rkk.marktplaats.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import nl.rkk.marktplaats.models.MyUser;
 
@@ -18,9 +16,6 @@ import nl.rkk.marktplaats.models.MyUser;
  * @author Kaj
  */
 @Stateless
-/*@NamedQueries({
-    @NamedQuery(name = "findByEmailPassword", query = "SELECT * FROM users WHERE email = :email AND password = :password")
-})*/
 public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacadeLocal {
     @PersistenceContext(unitName = "marktplaats-ejbPU")
     private EntityManager em;
@@ -34,9 +29,11 @@ public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacade
         super(MyUser.class);
     }
     
-    public MyUser find(String email, String password) {
-        MyUser user = (MyUser) em.createQuery("SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "'").getSingleResult();
-        return ( user == null ) ? null : user;
+    @Override
+    public boolean create(String email, String password) {
+        MyUser user = new MyUser(email, password);
+        this.create(user);
+        return true;
     }
     
 }
