@@ -27,6 +27,8 @@ public interface BidFacadeLocal {
 
     List<Bid> findAll();
 
+    List<Bid> findAll(Integer adid);
+    
     List<Bid> findRange(int[] range);
 
     int count();

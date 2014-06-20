@@ -16,6 +16,14 @@
         <servlet-name>AddAdServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.servlets.ads.AddAdServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.admin.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllBidsServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.servlets.bid.AllBidsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>AddAdServlet</servlet-name>
         <url-pattern>/ads/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/admin/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllBidsServlet</servlet-name>
+        <url-pattern>/bids/all</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

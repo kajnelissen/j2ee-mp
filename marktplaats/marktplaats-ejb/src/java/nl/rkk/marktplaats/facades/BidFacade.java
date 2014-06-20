@@ -6,6 +6,7 @@
 
 package nl.rkk.marktplaats.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,9 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
         super(Bid.class);
     }
     
+    @Override
+    public List<Bid> findAll(Integer adid)
+    {
+        return null;
+    }
 }
