@@ -6,6 +6,7 @@
 
 package nl.rkk.marktplaats.facades;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,7 +33,9 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
     
     @Override
     public List<Bid> findAll(Integer adid)
-    {
+    {        
+        List<Bid> b = new ArrayList<Bid>();
+        em.createQuery("SELECT * FROM BID WHERE AD_ID :adid").setParameter("adid", adid);
         return null;
     }
 }

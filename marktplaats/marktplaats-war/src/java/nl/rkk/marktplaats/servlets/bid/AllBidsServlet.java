@@ -62,7 +62,7 @@ public class AllBidsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer adid = Integer.parseInt(request.getParameter("AdID"));
-        
+        //BidFacade.findALL(adid);
         processRequest(request, response);
     }
 
