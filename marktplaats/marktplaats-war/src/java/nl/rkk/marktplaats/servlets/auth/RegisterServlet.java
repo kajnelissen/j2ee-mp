@@ -92,33 +92,29 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         PrintWriter out = response.getWriter();
-        //try (PrintWriter out = response.getWriter()) {
-            //PrintWriter out = response.getWriter();
-            //int count = users.count();
-            //out.println(count);
-        //}
         
         Dictionary<String, String> input = new Hashtable<>();
         input.put("email", request.getParameter("email"));
         input.put("password", request.getParameter("password"));
         
-        
         Validator validator = ValidatorFactory.make(UserRules.rules, input);
         
         if ( validator.passes() ) {
-            out.println("Yay!");
+            
+            String email = input.get("email");
+            String password = BCrypt.hashpw(input.get("password"), BCrypt.gensalt());
+            users.create(email, password);
+
+            // registered user, proceed to login page
+            getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+            
         } else {
+            
             for ( String error : validator.getErrors() ) {
                 out.println(error);
             }
-        }
-        
-        String email = request.getParameter("email");
-        String password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
-        //users.create(email, password);
-        
-        // registered user, proceed to login page
-        //getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+            
+        }        
     }
 
     /**
