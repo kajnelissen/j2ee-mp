@@ -6,9 +6,9 @@
 
 package nl.rkk.marktplaats.validation;
 
+import java.util.Collections;
 import java.util.Dictionary;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -16,16 +16,29 @@ import java.util.Map;
  */
 public class ValidatorFactory {
     
-    public static ValidatorFactory make(Dictionary<String, List<String>> rules, Dictionary<String, String> input) {
+    public static Validator make(Dictionary<String, List<String>> rules, Dictionary<String, String> input) {
         
-        /*for ( Map.Entry<String, List<String>> entry : input.entrySet() ) {
-            String key = entry.getKey();
-            List<String> value = entry.getValue();
+        //for ( Map.Entry<String, List<String>> entry : input.entrySet() ) {
+        List<String> keys = Collections.list(input.keys());
+            //List<String> value = entry.getValue();
+        //}
+        
+        Validator validator = new Validator();
+        
+        for ( String key : keys ) {
+            for ( String rule : rules.get(key) ) {
+                validator.addValidator(createValidator(rule, input.get(key)));
+            }
         }
         
-        Validator validator = new Validator();*/
-        
-        
+        return validator;
+    }
+    
+    public static IValidation createValidator(String rule, String param) {
+        switch ( rule ) {
+            case "required":
+                return new RequiredValidation(param);
+        }
         return null;
     }
     

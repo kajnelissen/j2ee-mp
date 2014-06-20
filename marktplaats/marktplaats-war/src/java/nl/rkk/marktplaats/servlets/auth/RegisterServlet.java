@@ -8,6 +8,12 @@ package nl.rkk.marktplaats.servlets.auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +23,9 @@ import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
 import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.models.UserRole;
+import nl.rkk.marktplaats.validation.Validator;
+import nl.rkk.marktplaats.validation.ValidatorFactory;
+import nl.rkk.marktplaats.validation.rules.UserRules;
 //import nl.rkk.marktplaats.models.UserRole;
 
 /**
@@ -82,18 +91,34 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        PrintWriter out = response.getWriter();
         //try (PrintWriter out = response.getWriter()) {
-            PrintWriter out = response.getWriter();
-            int count = users.count();
-            out.println(count);
+            //PrintWriter out = response.getWriter();
+            //int count = users.count();
+            //out.println(count);
         //}
+        
+        Dictionary<String, String> input = new Hashtable<>();
+        input.put("email", request.getParameter("email"));
+        input.put("password", request.getParameter("password"));
+        
+        
+        Validator validator = ValidatorFactory.make(UserRules.rules, input);
+        
+        if ( validator.passes() ) {
+            out.println("Yay!");
+        } else {
+            for ( String error : validator.getErrors() ) {
+                out.println(error);
+            }
+        }
         
         String email = request.getParameter("email");
         String password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
-        users.create(email, password);
+        //users.create(email, password);
         
         // registered user, proceed to login page
-        getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+        //getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
     }
 
     /**

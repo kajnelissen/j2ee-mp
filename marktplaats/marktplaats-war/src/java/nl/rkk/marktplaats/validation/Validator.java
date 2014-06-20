@@ -6,6 +6,7 @@
 
 package nl.rkk.marktplaats.validation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +17,19 @@ public class Validator {
     
     private List<IValidation> validators;
     
+    private List<String> errors;
+    
     public Validator() {
-        
+        this.validators = new ArrayList<IValidation>();
+        this.errors = new ArrayList<String>();
+    }
+    
+    public void addError(String error) {
+        this.errors.add(error);
+    }
+    
+    public List<String> getErrors() {
+        return this.errors;
     }
     
     public void addValidator(IValidation val) {
@@ -25,12 +37,14 @@ public class Validator {
     }
     
     public boolean passes() {
+        boolean ret = true;
         for ( IValidation val : this.validators ) {
             if ( val.validate() == false ) {
-                return false;
+                ret = false;
+                this.addError(val.getError());
             }
         }
-        return true;
+        return ret;
     }
     
 }
