@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <label>Beschrijving: </label>
-                    <input type="textarea"  name="beschrijving" />
+                    <input type="text"  name="beschrijving" />
                 </li>
                 <li>
                     <label>Categorie: </label>
@@ -31,6 +31,10 @@
                         <option value="Instrumenten">Instrumenten</option>
                         <option value="Overige">Overige Zooi</option>
                     </select>
+                </li>
+                <li>
+                    <label>Prijs: </label>
+                    <input type="number"  name="prijs" />
                 </li>
                 <li>
                     <input type="submit" value="Voeg toe." />

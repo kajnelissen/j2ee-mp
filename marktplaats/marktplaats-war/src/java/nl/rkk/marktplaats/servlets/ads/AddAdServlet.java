@@ -81,15 +81,13 @@ public class AddAdServlet extends HttpServlet {
        //processRequest(request, response);
         
          String title= request.getParameter("titel");
-         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println(title);
-        }
-         
-        // ads.create();
+         String beschrijving = request.getParameter("beschrijving");
+         String categorie = request.getParameter("categorie");
+         String prijs = request.getParameter("prijs");
         
-    }
+        ads.create(title, beschrijving, categorie, Double.parseDouble(prijs));
+        
+        }
 
     /**
      * Returns a short description of the servlet.
