@@ -4,39 +4,21 @@
  * and open the template in the editor.
  */
 
-package nl.rkk.marktplaats.servlets.auth;
+package nl.rkk.marktplaats.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import nl.rkk.marktplaats.facades.AdFacadeLocal;
-import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
-import nl.rkk.marktplaats.models.MyUser;
-import nl.rkk.marktplaats.models.UserRole;
-import nl.rkk.marktplaats.validation.Validator;
-import nl.rkk.marktplaats.validation.ValidatorFactory;
-import nl.rkk.marktplaats.validation.rules.UserRules;
-//import nl.rkk.marktplaats.models.UserRole;
 
 /**
  *
  * @author Kaj
  */
-public class RegisterServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
 
-    @EJB
-    private MyUserFacadeLocal users;
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,10 +36,10 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
+            out.println("<title>Servlet UserServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,7 +58,8 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);
+        
+        
     }
 
     /**
@@ -90,35 +73,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        PrintWriter out = response.getWriter();
-        //try (PrintWriter out = response.getWriter()) {
-            //PrintWriter out = response.getWriter();
-            //int count = users.count();
-            //out.println(count);
-        //}
-        
-        Dictionary<String, String> input = new Hashtable<>();
-        input.put("email", request.getParameter("email"));
-        input.put("password", request.getParameter("password"));
-        
-        
-        Validator validator = ValidatorFactory.make(UserRules.rules, input);
-        
-        if ( validator.passes() ) {
-            out.println("Yay!");
-        } else {
-            for ( String error : validator.getErrors() ) {
-                out.println(error);
-            }
-        }
-        
-        String email = request.getParameter("email");
-        String password = BCrypt.hashpw(request.getParameter("password"), BCrypt.gensalt());
-        //users.create(email, password);
-        
-        // registered user, proceed to login page
-        //getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+        processRequest(request, response);
     }
 
     /**
@@ -128,7 +83,7 @@ public class RegisterServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Register servlet";
+        return "Short description";
     }// </editor-fold>
 
 }

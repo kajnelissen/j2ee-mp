@@ -9,6 +9,7 @@ package nl.rkk.marktplaats.facades;
 import java.util.List;
 import javax.ejb.Local;
 import nl.rkk.marktplaats.models.MyUser;
+import nl.rkk.marktplaats.models.UserRole;
 
 /**
  *
@@ -32,5 +33,7 @@ public interface MyUserFacadeLocal {
     int count();
     
     boolean create(String email, String password);
+    
+    boolean create(String email, String password, UserRole type);
     
 }

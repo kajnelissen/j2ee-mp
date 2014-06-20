@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import nl.rkk.marktplaats.models.MyUser;
+import nl.rkk.marktplaats.models.UserRole;
 
 /**
  *
@@ -32,6 +33,13 @@ public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacade
     @Override
     public boolean create(String email, String password) {
         MyUser user = new MyUser(email, password);
+        this.create(user);
+        return true;
+    }
+    
+    @Override
+    public boolean create(String email, String password, UserRole type) {
+        MyUser user = new MyUser(email, password, type);
         this.create(user);
         return true;
     }

@@ -20,7 +20,12 @@ public class RequiredValidation extends AbstractValidation {
     
     @Override
     public boolean validate() {
-        return this.param.length() > 0;
+        if ( this.param.length() > 0 ) {
+            return true;
+        } else {
+            this.addError("Required field is empty.");
+            return false;
+        }
     }
     
 }

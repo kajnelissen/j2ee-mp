@@ -35,7 +35,7 @@ public class MyUser implements Serializable {
     
     private String password;
     
-    //private UserRole type;
+    private UserRole type;
     
     public MyUser() {
         
@@ -44,6 +44,15 @@ public class MyUser implements Serializable {
     public MyUser(String email, String password) {
         this.setEmail(email);
         this.setPassword(password);
+        this.setType(UserRole.User);
+    }
+    
+    
+    
+    public MyUser(String email, String password, UserRole type) {
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setType(type);
     }
 
     public Integer getId() {
@@ -86,13 +95,13 @@ public class MyUser implements Serializable {
         this.password = password;
     }
 
-    /*public UserRole getType() {
+    public UserRole getType() {
         return type;
     }
 
     public void setType(UserRole type) {
         this.type = type;
-    }*/
+    }
 
     @Override
     public int hashCode() {
