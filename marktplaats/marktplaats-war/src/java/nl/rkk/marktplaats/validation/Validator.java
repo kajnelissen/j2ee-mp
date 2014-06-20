@@ -24,4 +24,13 @@ public class Validator {
         this.validators.add(val);
     }
     
+    public boolean passes() {
+        for ( IValidation val : this.validators ) {
+            if ( val.validate() == false ) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 }

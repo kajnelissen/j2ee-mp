@@ -8,6 +8,7 @@ package nl.rkk.marktplaats.validation;
 
 import java.util.Dictionary;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -16,6 +17,15 @@ import java.util.List;
 public class ValidatorFactory {
     
     public static ValidatorFactory make(Dictionary<String, List<String>> rules, Dictionary<String, String> input) {
+        
+        /*for ( Map.Entry<String, List<String>> entry : input.entrySet() ) {
+            String key = entry.getKey();
+            List<String> value = entry.getValue();
+        }
+        
+        Validator validator = new Validator();*/
+        
+        
         return null;
     }
     
