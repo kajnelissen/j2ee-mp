@@ -24,6 +24,7 @@ public class Ad implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private Integer id;
     private String title;
     private String description;
@@ -31,7 +32,7 @@ public class Ad implements Serializable {
     private Double price;
 
     public String getDescription() {
-        return description;
+         return description;
     }
 
     public void setDescription(String description) {

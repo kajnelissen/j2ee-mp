@@ -8,22 +8,23 @@ package nl.rkk.marktplaats.servlets.ads;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
+import nl.rkk.marktplaats.models.Ad;
 
 /**
  *
- * @author Kaj
+ * @author Roy
  */
-public class AddAdServlet extends HttpServlet {
+public class ShowAdServlet extends HttpServlet {
     
     @EJB
     private AdFacadeLocal ads;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,10 +42,10 @@ public class AddAdServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddAdServlet</title>");            
+            out.println("<title>Servlet ShowAdServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddAdServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ShowAdServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,33 +64,26 @@ public class AddAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
-        
+        List<Ad> ads = this.ads.findAll();
+        request.setAttribute("ads", ads);
+        getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response);
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param response servlet respe
-     * @throws ServletException if a servonslet-specific error occurs
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //processRequest(request, response);
+        //processRequest(request, response);
         
-         String title= request.getParameter("titel");
-         String beschrijving = request.getParameter("beschrijving");
-         String categorie = request.getParameter("categorie");
-         String prijs = request.getParameter("prijs");
-        
-        ads.create(title, beschrijving, categorie, Double.parseDouble(prijs));
-        
-        
-         //getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response); 
-        }
+           
+    }
 
     /**
      * Returns a short description of the servlet.

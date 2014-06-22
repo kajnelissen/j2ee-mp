@@ -6,6 +6,7 @@
 
 package nl.rkk.marktplaats.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,9 +30,8 @@ public class AdFacade extends AbstractFacade<Ad> implements AdFacadeLocal {
         super(Ad.class);
     }
     
-    
-    
-        public void create(String titel, String beschrijving, String categorie, Double prijs){
+    @Override  
+    public void create(String titel, String beschrijving, String categorie, Double prijs){
     
         Ad ad = new Ad();
         
@@ -40,5 +40,15 @@ public class AdFacade extends AbstractFacade<Ad> implements AdFacadeLocal {
         ad.setCategory(categorie);
         ad.setPrice(prijs);
         this.create(ad);
+        
     }
+
+    @Override
+    public List<Ad> findAdvertisment(Integer id) {
+        return em.createQuery("SELECT a FROM AD a").getResultList();
+                //.setParameter("id",id)
+                
+    }
+
+        
 }

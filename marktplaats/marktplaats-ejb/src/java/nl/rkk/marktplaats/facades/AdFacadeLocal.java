@@ -28,11 +28,12 @@ public interface AdFacadeLocal {
     List<Ad> findAll();
 
     List<Ad> findRange(int[] range);
+    
+    List<Ad> findAdvertisment(Integer id);
 
     int count();
     
     void create(String titel, String beschrijving, String categorie, Double prijs);
-
     
           
 }
