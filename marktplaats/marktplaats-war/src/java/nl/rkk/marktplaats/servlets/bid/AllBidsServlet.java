@@ -61,9 +61,14 @@ public class AllBidsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Integer adid = Integer.parseInt(request.getParameter("AdID"));
+        
+        Integer adid = Integer.parseInt(request.getParameter("AD_ID"));
         //BidFacade.findALL(adid);
-        processRequest(request, response);
+        
+        // nu geef je de pagina een variabele met de naam adid die de waarde van dat adid heeft die je hierboven hebt geïnitialiseerd
+        request.setAttribute("AD_ID", adid);
+        
+        getServletContext().getRequestDispatcher("/bids/index.jsp").forward(request, response);
     }
 
     /**
