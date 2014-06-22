@@ -8,24 +8,24 @@ package nl.rkk.marktplaats.servlets.bid;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.ejb.EJB;
+import static java.lang.System.out;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import nl.rkk.marktplaats.facades.BidFacadeLocal;
-import nl.rkk.marktplaats.models.Bid;
+import nl.rkk.marktplaats.servlets.auth.BCrypt;
+import nl.rkk.marktplaats.validation.Validator;
+import nl.rkk.marktplaats.validation.ValidatorFactory;
+import nl.rkk.marktplaats.validation.rules.UserRules;
 
 /**
  *
  * @author kyra
  */
-public class AllBidsServlet extends HttpServlet {
+public class AdBidsServlet extends HttpServlet {
 
-    @EJB
-    private BidFacadeLocal bid;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,10 +43,10 @@ public class AllBidsServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AllBidsServlet</title>");            
+            out.println("<title>Servlet AdBidsServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AllBidsServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdBidsServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,15 +64,7 @@ public class AllBidsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Integer adid = Integer.parseInt(request.getParameter("AD_ID"));
-        List<Bid> b = new ArrayList<Bid>();
-        //b = BidFacadeLocal.findAll(adid);
-        
-        // nu geef je de pagina een variabele met de naam adid die de waarde van dat adid heeft die je hierboven hebt geïnitialiseerd
-        request.setAttribute("AD_ID", adid);
-        
-        getServletContext().getRequestDispatcher("/bids/index.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -87,6 +79,21 @@ public class AllBidsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+                Dictionary<String, String> input = new Hashtable<>();
+        input.put("Bid", request.getParameter("amount"));        
+        
+        Validator validator = ValidatorFactory.make(UserRules.rules, input);
+        
+        if ( validator.passes() ) {
+            out.println("Yay!");
+        } else {
+            for ( String error : validator.getErrors() ) {
+                out.println(error);
+            }
+        }
+        
+        String bid = request.getParameter("amount");
     }
 
     /**

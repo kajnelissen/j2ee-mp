@@ -36,6 +36,6 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
     {        
         List<Bid> b = new ArrayList<Bid>();
         b = em.createQuery("SELECT * FROM BID WHERE AD_ID :adid").setParameter("adid", adid).getResultList();
-        return null;
+        return b;
     }
 }
