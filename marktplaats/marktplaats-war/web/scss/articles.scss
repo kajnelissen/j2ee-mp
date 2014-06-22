@@ -1,0 +1,303 @@
+article, section {
+
+	p {
+		text-align: justify;
+		clear: both;
+	}
+
+	.note {
+		/*@extend .color-wetasphalt;*/
+		// margin: 0 -2rem;
+		padding: 2rem;
+		border-radius: $default-radius;
+		color: #fff;
+		
+
+		/*p {*/
+			background: #2C3E50 url('/img/icon/pokeball.svg') no-repeat 1rem center;
+			background-size: auto 8rem;
+			padding-left: 10rem;
+		/*}*/
+		// position: relative;
+
+		/* Use the following CSS code if you want to use data attributes for inserting your icons */
+		// [data-icon]:before {
+		// 	position: absolute;
+		//     font-family: 'any-old-icon';
+		//     content: attr(data-icon);
+		//     speak: none;
+		//     font-weight: normal;
+		//     font-variant: normal;
+		//     text-transform: none;
+		//     font-size: 9.6rem;
+		//     top: 50%;
+		//     -webkit-font-smoothing: antialiased;
+		//     margin-left: -12rem;
+		// }
+	}
+
+	pre {
+		padding: 2rem;
+		border-radius: $default-radius;
+		background-color: $color-clouds;
+		color: #5a5555;
+
+		strong {
+			color: #D91E18;
+			border-bottom: 2px dotted #D91E18;
+		}
+	}
+
+	h1 {
+		@include font-size(2);
+		margin-bottom: 1rem;
+		padding: 2rem;
+		color: #000;
+		border-bottom: 1rem solid #EF4836;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+	h2 {
+		@include font-size(1.5);
+		margin-bottom: 0.5rem;
+		padding: 1rem;
+		color: #000;
+		/*background-color: #67809F;
+		color: #fff;
+		border-radius: $default-radius;*/
+		border-bottom: 1rem solid #F39C12;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+	h3 {
+		@include font-size(1.2);
+		margin-bottom: 0.25rem;
+		padding: 1rem;
+		color: #000;
+		border-bottom: 0.5rem solid #86E2D5;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+	.title {
+		/*margin-top: -2rem;*/
+		// @extend .color-clouds;
+	}
+
+}
+
+.cat-games, .cat-dp, .cat-pt, .cat-hgss, .cat-bw, .cat-b2w2, .cat-xy, .cat-oras {
+
+	& > header h1 {
+		border-color: #EF4836;
+	}
+
+	.category {
+		background-color: #EF4836;
+	}
+
+}
+
+.cat-site {
+
+	& > header h1 {
+		border-color: #F39C12;
+	}
+
+	.category {
+		background-color: #F39C12;
+	}
+
+}
+
+.cat-community {
+
+	& > header h1 {
+		border-color: #00B16A;
+	}
+
+	.category {
+		background-color: #00B16A;
+	}
+
+}
+
+.cat-algemeen {
+
+	& > header h1 {
+		border-color: #3498DB;
+	}
+
+	.category {
+		background-color: #3498DB;
+	}
+
+}
+
+.cat-tactiek {
+
+	& > header h1 {
+		border-color: #1F3A93;
+	}
+
+	.category {
+		background-color: #1F3A93;
+	}
+
+}
+
+
+
+/*.news-article {
+
+
+
+}*/
+
+/**
+ *	Categories
+ */
+
+.category {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	color: #fff;
+}
+
+.published {
+	color: #999;
+}
+
+.published > .category {
+	margin-right: 2rem;
+}
+
+.games {
+	color: #fff;
+	background-color: #EF4836;
+}
+
+.site {
+	color: #fff;
+	background-color: #22A7F0;
+}
+
+/**
+ *	Figures
+ */
+
+figure {
+
+	width: 100%;
+	text-align: center;
+
+	& > figcaption {
+		@include font-size(0.9);
+		padding: 0.5rem 1rem;
+		background-color: #D2D7D3;
+		border-radius: $default-radius;
+		width: auto;
+		margin: 1rem 0;
+	}
+
+	& > img {
+		max-width: 100%;
+		margin: 1rem 0;
+	}
+
+}
+
+figure.left {
+
+	width: initial;
+	float: left;
+	margin: 0 1rem 0 0;
+
+}
+
+figure.right {
+
+	width: initial;
+	float: right;
+	margin: 0 0 0 1rem;
+
+}
+
+blockquote {
+
+	background-color: #C5EFF7;
+	width: 100%;
+	text-align: center;
+	padding: 1rem;
+	border-radius: $default-radius;
+	margin: 1rem 0;
+
+}
+
+.question {
+
+	background-color: #26C281;
+	width: 100%;
+	text-align: center;
+	padding: 1rem 2rem;
+	border-radius: $default-radius;
+	margin: 1rem 0;
+	color: #fff;
+	text-align: left;
+
+}
+
+.author {
+
+	background-color: $color-clouds;
+	border-radius: $default-radius;
+	padding: 1rem;
+
+	& > figure {
+		max-width: 10rem;
+		padding: 0;
+		margin: 0 1rem 0 0;
+		text-align: left;
+
+		img {
+			border-radius: $default-radius * 0.5;
+			margin: 0;
+		}
+	}
+
+	& > h2 {
+		border: none;
+		padding: 0;
+		margin: 0 0 0.5rem 0;
+		@include font-size(1.2);
+	}
+
+	/*& > p {
+		margin: 0;
+		width: auto;
+		float: left;
+		display: inline-block;
+		border: 1px solid #000;
+	}*/
+
+}

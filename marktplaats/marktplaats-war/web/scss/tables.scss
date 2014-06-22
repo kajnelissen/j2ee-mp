@@ -1,0 +1,263 @@
+body > header {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		
+		
+	}
+
+}
+
+table {
+    /*border-collapse: collapse;*/
+    border-collapse: separate; 
+    border-spacing: 0 0.25rem;
+    width: 100%;
+
+    tr {
+        &:nth-child(2n + 1) {
+            background-color: $color-clouds;
+        }
+    }
+
+    td, th {
+        padding: 0.5rem 0.25rem;
+        text-align: center;
+    }
+
+    th {
+        background-color: $color-emerald;
+        color: #fff;
+    }
+
+    /*.hide-30-under,
+    .hide-40-under,
+    .hide-50-under,
+    .hide-60-under,
+    .hide-70-under,
+    .hide-80-under {
+        display: none;
+    }*/
+
+    tr.row-header {
+        background-color: $color-nephritis;
+        color: #fff;
+
+        td, th {
+            padding: 1rem 0.25rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: $color-nephritis;
+        }
+    }
+
+    tr.row-sub-header {
+        background-color: $color-emerald;
+        color: #fff;
+
+        td, th {
+            padding: 0.5rem 0.25rem;
+            text-align: center;
+        }
+    }
+
+    tr.game-x {
+
+        & > td, & > th {
+            background-color: #005e9b;
+            color: #fff;
+        }
+
+    }
+
+    tr.game-y {
+
+        & > td, & > th {
+            background-color: #d32b44;
+            color: #fff;
+        }
+        
+    }
+
+    td.stat-cell {
+        padding: 0 0.25rem;
+    }
+
+    td.vertical-spacing {
+        border-spacing: 0.25rem 0.25rem;
+    }
+
+    .left {
+        float: none;
+        text-align: left;
+    }
+}
+
+
+
+
+
+.hide-30-under,
+.hide-40-under,
+.hide-50-under,
+.hide-60-under,
+.hide-70-under,
+.hide-80-under {
+    display: table-cell;
+}  
+
+.hide-30-under {
+
+    @media only screen and (min-width: 31em) {
+
+        display: none;
+    }
+
+}
+
+.hide-40-under {
+
+    @media only screen and (min-width: 41em) {
+
+        display: none;
+    }
+
+}
+
+.hide-50-under {
+
+    @media only screen and (max-width: 50em) {
+
+        display: none;
+    }
+
+}
+
+.hide-60-under {
+
+    @media only screen and (max-width: 60em) {
+
+        display: none;
+    }
+
+}
+
+.hide-70-under {
+
+    @media only screen and (max-width: 70em) {
+
+        display: none;
+    }
+
+}
+
+.hide-80-under {
+
+    @media only screen and (max-width: 80em) {
+
+        display: none;
+    }
+
+}
+
+
+/*.angle-90 {
+
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    writing-mode: lr-tb;
+
+}*/
+
+.typechart {
+
+    /*border-spacing: 0;
+    border-collapse: collapse;
+
+    td {
+        
+        border: 1px solid black;
+    }*/
+
+    /*tr.row-sub-header {
+
+        td, th {
+            padding: 0;
+            text-align: center;
+        }
+    }*/
+
+    .se {
+
+        background-color: #2ECC71;
+
+    }
+
+    .immune {
+
+        background-color: #34495E;
+
+    }
+
+    .nve {
+
+        background-color: #E74C3C;
+
+    }
+
+}
+
+/*.evochain {
+
+    width: auto;
+
+    tr {
+        &:nth-child(2n + 1) {
+            background-color: none;
+        }
+    }
+
+}*/

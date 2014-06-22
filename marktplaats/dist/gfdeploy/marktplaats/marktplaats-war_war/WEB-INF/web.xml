@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<!--    <context-param>
+	<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+	<param-value>.xhtml</param-value>
+    </context-param>-->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.servlets.auth.RegisterServlet</servlet-class>
@@ -20,6 +24,10 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.admin.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MemberlistServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.admin.MemberlistServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -39,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/admin/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberlistServlet</servlet-name>
+        <url-pattern>/admin/members</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
