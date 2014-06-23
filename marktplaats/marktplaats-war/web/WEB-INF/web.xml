@@ -20,6 +20,10 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.admin.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MemberlistServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.admin.MemberlistServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -38,6 +42,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/admin/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemberlistServlet</servlet-name>
         <url-pattern>/admin/users</url-pattern>
     </servlet-mapping>
     <session-config>

@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -19,6 +21,10 @@ import javax.persistence.Table;
  */
 @Entity
 //@Table(name = "users")
+@NamedQueries({
+    @NamedQuery(name = "User.findByCredentials", query = "SELECT u FROM MyUser u WHERE u.email = :email AND u.password = :password"),
+    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM MyUser u WHERE u.email = :email")
+})
 public class MyUser implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -46,8 +52,6 @@ public class MyUser implements Serializable {
         this.setPassword(password);
         this.setType(UserRole.User);
     }
-    
-    
     
     public MyUser(String email, String password, UserRole type) {
         this.setEmail(email);

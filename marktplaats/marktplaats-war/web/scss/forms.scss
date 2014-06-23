@@ -1,0 +1,352 @@
+.feedback {
+	display: block;
+	width: 100%;
+	padding: 1em;
+	/*border-radius: 0.5em;*/
+	color: #fff;
+	margin: 0;
+}
+
+.flash {
+	@extend .feedback;
+	background-color: $color-flash;
+}
+
+.error {
+	@extend .feedback;
+	background-color: $color-error;
+}
+
+.ok {
+	@extend .feedback;
+	background-color: $color-ok;
+}
+
+form {
+
+	display: block;
+	width: 100%;
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		list-style-type: none;
+	}
+
+	/* The CSS */
+	select {
+	    display: block;
+		width: 100%;
+		padding: 0 1rem;
+		@include line-height(2.5);
+	    margin: 0;
+	    background-color: #eee;
+	    -webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;
+	    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    color:#888;
+	    border:none;
+	    outline:none;
+	    display: inline-block;
+	    -webkit-appearance:none;
+	    -moz-appearance:none;
+	    appearance:none;
+	    cursor:pointer;
+	}
+
+	/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	    select {padding-right:18px}
+	}
+
+	/*label {position:relative}
+	label:after {
+	    content:'<>';
+	    font:11px "Consolas", monospace;
+	    color:#aaa;
+	    -webkit-transform:rotate(90deg);
+	    -moz-transform:rotate(90deg);
+	    -ms-transform:rotate(90deg);
+	    transform:rotate(90deg);
+	    right:8px; top:2px;
+	    padding:0 0 2px;
+	    border-bottom:1px solid #ddd;
+	    position:absolute;
+	    pointer-events:none;
+	}
+
+	label:before {
+	    content:'';
+	    right:6px; top:0px;
+	    width:20px; height:20px;
+	    background:#f8f8f8;
+	    position:absolute;
+	    pointer-events:none;
+	    display:block;
+	}*/
+
+	label {
+
+		display: inline-block;
+		color: #fff;
+		font-weight: bold;
+		background-color: $color-ebony-clay;
+		padding: 0 1rem;
+		margin: 1rem 0 0 0;
+		/*@include height(2.5);*/
+		@include line-height(2.5);
+		-webkit-border-top-left-radius: $default-radius;
+		-webkit-border-top-right-radius: $default-radius;
+		-moz-border-radius-topleft: $default-radius;
+		-moz-border-radius-topright: $default-radius;
+		border-top-left-radius: $default-radius;
+		border-top-right-radius: $default-radius;
+
+	}
+
+	input[type="text"], input[type="password"] {
+
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
+		/*margin-top: 1rem;*/
+		border: none;
+		-webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;
+		background-color: #F2F1EF;
+		/*@include height(3);*/
+		@include line-height(3);
+
+	}
+
+	input[type="submit"] {
+
+		display: block;
+		margin: 1rem 0;
+		color: #fff;
+		font-weight: bold;
+		border: none;
+		border-radius: $default-radius;
+		background-color: $color-fire-bush;
+		/*@include height(2.5);*/
+
+	}
+
+	textarea {
+
+		display: block;
+		width: 100%;
+		padding: 1rem;
+		@include height(8);
+		border: 1px solid #BDC3C7;
+		/*-webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;*/
+		border-radius: $default-radius;
+		background-color: #F2F1EF;
+
+	}
+
+}
+
+#content {
+
+	
+
+	
+
+}
+
+
+.user-icon {
+	fill: #BDC3C7;
+	border: none;
+}
+
+.search-icon {
+	fill: #BDC3C7;
+	border: none;
+}
+
+#nav-user-icon:hover {
+
+	.user-icon {
+
+		fill: #22313F;
+
+	}
+
+}
+
+#nav-search-icon:hover {
+
+	.search-icon {
+
+		fill: #22313F;
+		
+	}
+
+}
+
+.btn-danger {
+
+	background-color: #EF4836;
+
+	&:hover {
+		background-color: #D64541;
+	}
+
+}
+
+.btn-info {
+
+	background-color: #F4B350;
+	color: #fff;
+
+	&:hover {
+		background-color: #EB9532;
+	}
+
+}
+
+.btn-cancel {
+
+	background-color: #F4D03F;
+	color: #fff;
+
+	&:hover {
+		background-color: #F7CA18;
+	}
+
+}
+
+/*#nav-user-icon, #nav-search-icon {
+
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	&:hover {
+		border: none;
+	}
+
+}*/
+
+#user-panel > form {
+
+	padding: 0 1rem;
+
+	@media only screen and (min-width: 90em) {
+
+		padding: 0 2rem;
+
+	}
+
+	label {
+
+		/*display: block;*/
+		width: 100%;
+		@include height(2.5);
+		@include line-height(2.5);
+
+	}
+
+	input[type="text"], input[type="password"] {
+
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
+		margin-top: 1rem;
+		border: none;
+		border-radius: $default-radius;
+		@include height(2.5);
+		@include line-height(2.5);
+
+	}
+
+	input[type="checkbox"] {
+
+		margin-top: 1rem;
+		margin-right: 1rem;
+		width: 1rem;
+		@include height(1);
+		@include line-height(2.5);
+
+	}
+
+	input[type="submit"] {
+
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
+		margin: 1rem 0;
+		border: none;
+		border-radius: $default-radius;
+		background-color: #C5EFF7;
+		@include height(2.5);
+		@include line-height(2.5);
+
+	}
+
+}
+
+#search-form {
+
+    @include height(4);
+
+    input, a {
+        display: inline-block;
+        float: right;
+    }
+
+    input[type="text"] {
+        margin-top: 0.5rem;
+        background-color: #fff;
+        @include height(3);
+        border-radius: 0;
+        -webkit-border-top-left-radius: $default-radius;
+        -webkit-border-bottom-left-radius: $default-radius;
+        -moz-border-radius-topleft: $default-radius;
+        -moz-border-radius-bottomleft: $default-radius;
+        border-top-left-radius: $default-radius;
+        border-bottom-left-radius: $default-radius;
+        width: initial;
+        margin-right: 0;
+    }
+
+    input[type="submit"] {
+        margin: 0.5rem 1rem 0 0;
+        background: #00B16A url('/img/search.svg') no-repeat center center;
+        background-size: auto 50%;
+        @include width(3);
+        @include height(3);
+        border-radius: 0;
+        -webkit-border-top-right-radius: $default-radius;
+        -webkit-border-bottom-right-radius: $default-radius;
+        -moz-border-radius-topright: $default-radius;
+        -moz-border-radius-bottomright: $default-radius;
+        border-top-right-radius: $default-radius;
+        border-bottom-right-radius: $default-radius;
+
+        &:hover {
+            background-color: #3498DB;
+        }
+    }
+
+}
