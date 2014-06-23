@@ -24,7 +24,7 @@ public final class UserRules {
         rules = new Hashtable<>();
         rules.put("firstName", Arrays.asList("required"));
         rules.put("lastName", Arrays.asList("required"));
-        rules.put("email", Arrays.asList("required"));
+        rules.put("email", Arrays.asList("required|email"));
         rules.put("password", Arrays.asList("required"));
     }
     

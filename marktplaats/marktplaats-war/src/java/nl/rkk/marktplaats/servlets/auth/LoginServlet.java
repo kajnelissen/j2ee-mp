@@ -111,10 +111,8 @@ public class LoginServlet extends HttpServlet {
         } else {
             
             request.setAttribute("errorMsg", "Logingegevens incorrect!");
-            //request.setAttribute("formErrors", validator.getErrors());
-            List<String> errors = validator.getErrors("email");
-            request.setAttribute("hasEmailErrors", validator.getErrors("email"));
-            request.setAttribute("hasPasswordErrors", validator.getErrors("password"));
+            request.setAttribute("formErrors", validator.getErrors());
+            //srequest.setAttribute(, this);
             getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);  
             
         }

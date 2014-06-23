@@ -26,8 +26,11 @@ public class ValidatorFactory {
         Validator validator = new Validator();
         
         for ( String key : keys ) {
-            for ( String rule : rules.get(key) ) {
-                validator.addValidator(createValidator(key, rule, input.get(key)));
+            for ( String ruleset : rules.get(key) ) {
+                String[] parts = ruleset.split("\\|");
+                for ( String rule : parts ) {
+                    validator.addValidator(createValidator(key, rule, input.get(key)));
+                }
             }
         }
         
@@ -38,6 +41,8 @@ public class ValidatorFactory {
         switch ( rule ) {
             case "required":
                 return new RequiredValidation(attribute, param);
+            case "email":
+                return new EmailValidation(attribute, param);
         }
         return null;
     }

@@ -248,6 +248,7 @@ exists or setup the property manually. For example like this:
     <target depends="init,deps-jar,pre-pre-compile,pre-compile" name="-do-compile-deps">
         <copyfiles files="${reference.marktplaats-war.dist-ear}" todir="${build.dir}//"/>
         <copyfiles files="${reference.marktplaats-ejb.dist-ear}" todir="${build.dir}//"/>
+        <copyfiles files="${file.reference.commons-validator-1.4.0.jar}" todir="${build.dir}//"/>
     </target>
     <target name="post-compile">
         <!-- Empty placeholder for easier customization. -->

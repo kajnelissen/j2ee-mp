@@ -26,10 +26,6 @@ form {
 
 	display: block;
 	width: 100%;
-        
-        span.error {
-            color: $color-error;
-        }
 
 	ul {
 		margin: 0;
@@ -153,6 +149,7 @@ form {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             background-color: #F2F1EF;
+            color: #000;
         }
 
 }

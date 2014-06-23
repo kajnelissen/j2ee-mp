@@ -109,13 +109,9 @@ public class RegisterServlet extends HttpServlet {
             
         } else {
             
-            for ( String error : validator.getErrors("email") ) {
-                out.println(error);
-            }
-            out.println("<hr />");
-            for ( String error : validator.getErrors("password") ) {
-                out.println(error);
-            }
+            request.setAttribute("errorMsg", "Gegevens incorrect!");
+            request.setAttribute("formErrors", validator.getErrors());
+            getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);  
             
         }        
     }
