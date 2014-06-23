@@ -12,7 +12,13 @@ package nl.rkk.marktplaats.validation;
  */
 public abstract class AbstractValidation implements IValidation {
     
+    private String attribute;
+    
     protected String error;
+    
+    public AbstractValidation(String attribute) {
+        this.setAttribute(attribute);
+    }
     
     public abstract boolean validate();
     
@@ -22,6 +28,14 @@ public abstract class AbstractValidation implements IValidation {
     
     public String getError() {
         return this.error;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
     
 }

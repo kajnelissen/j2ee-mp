@@ -26,18 +26,23 @@ public class ValidatorFactory {
         Validator validator = new Validator();
         
         for ( String key : keys ) {
-            for ( String rule : rules.get(key) ) {
-                validator.addValidator(createValidator(rule, input.get(key)));
+            for ( String ruleset : rules.get(key) ) {
+                String[] parts = ruleset.split("\\|");
+                for ( String rule : parts ) {
+                    validator.addValidator(createValidator(key, rule, input.get(key)));
+                }
             }
         }
         
         return validator;
     }
     
-    public static IValidation createValidator(String rule, String param) {
+    public static IValidation createValidator(String attribute, String rule, String param) {
         switch ( rule ) {
             case "required":
-                return new RequiredValidation(param);
+                return new RequiredValidation(attribute, param);
+            case "email":
+                return new EmailValidation(attribute, param);
         }
         return null;
     }

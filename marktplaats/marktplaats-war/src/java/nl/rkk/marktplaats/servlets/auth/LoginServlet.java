@@ -8,13 +8,21 @@ package nl.rkk.marktplaats.servlets.auth;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
 import nl.rkk.marktplaats.models.MyUser;
+import nl.rkk.marktplaats.security.Encryption;
+import nl.rkk.marktplaats.validation.Validator;
+import nl.rkk.marktplaats.validation.ValidatorFactory;
+import nl.rkk.marktplaats.validation.rules.UserRules;
 
 /**
  *
@@ -77,12 +85,37 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        //MyUser user = users.find(email, BCrypt.hashpw(password, BCrypt.gensalt()));
+        Dictionary<String, String> input = new Hashtable<>();
+        input.put("email", request.getParameter("email"));
+        input.put("password", request.getParameter("password"));
         
-        getServletContext().getRequestDispatcher("/index.html").forward(request, response);  
+        Validator validator = ValidatorFactory.make(UserRules.rules, input);
+        
+        if ( validator.passes() ) {
+            
+            String email = input.get("email");
+            String password = Encryption.encrypt(input.get("password"));
+            
+            MyUser user = this.users.findUserByCredentials(email, password);
+            
+            if ( user == null ) {
+                request.setAttribute("errorMsg", "Logingegevens incorrect!");
+                getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);  
+            } else {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("currentUser", user);
+                request.setAttribute("notification", "Je bent nu ingelogd!");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response); 
+            }
+            
+        } else {
+            
+            request.setAttribute("errorMsg", "Logingegevens incorrect!");
+            request.setAttribute("formErrors", validator.getErrors());
+            //srequest.setAttribute(, this);
+            getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);  
+            
+        }
     }
 
     /**

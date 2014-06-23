@@ -1,4 +1,5 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
 <html>
@@ -24,15 +25,27 @@
         <div class="user-status-bar">
             <div class="page-block-container clearfix">
                 <div>
-                        <span>Welkom, Gast</span>
+                    <c:if test="${not empty sessionScope.currentUser}">
+                        <span>Welkom, ${sessionScope.currentUser.email}</span>
+                        <a href="/marktplaats-war/logout">Uitloggen</a> 
+                    </c:if>
+                    <c:if test="${empty sessionScope.currentUser}">
+                        <span>Welkom, Gast</span>  
                         <a href="/marktplaats-war/register">Registreren</a>
-                        <a href="/marktplaats-war/login">Inloggen</a>
+                        <a href="/marktplaats-war/login">Inloggen</a> 
+                    </c:if>
                 </div>
             </div>
         </div>
     
     <div class="page-block-container main-container clearfix">
         <div class="content-container">
+            <c:if test="${not empty notification}">
+                <div class="ok">${notification}</div> 
+            </c:if>
+            <c:if test="${not empty errorMsg}">
+                <div class="error">${errorMsg}</div> 
+            </c:if>
             <main id="content">
                 <jsp:doBody/>
             </main>

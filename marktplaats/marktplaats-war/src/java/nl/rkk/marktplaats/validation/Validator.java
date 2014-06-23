@@ -7,6 +7,8 @@
 package nl.rkk.marktplaats.validation;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -17,19 +19,31 @@ public class Validator {
     
     private List<IValidation> validators;
     
-    private List<String> errors;
+    //private List<String> errors;
+    
+    private Dictionary<String, List<String>> errors;
     
     public Validator() {
         this.validators = new ArrayList<IValidation>();
-        this.errors = new ArrayList<String>();
+        //this.errors = new ArrayList<String>();
+        this.errors = new Hashtable<>();
     }
     
-    public void addError(String error) {
-        this.errors.add(error);
+    public void addError(String attribute, String error) {
+        //this.errors.add(error);
+        if ( this.errors.get(attribute) == null ) {
+            this.errors.put(attribute, new ArrayList<String>());
+        }
+        this.errors.get(attribute).add(error);
     }
     
-    public List<String> getErrors() {
+    public Dictionary<String, List<String>> getErrors() {
         return this.errors;
+    }
+    
+    public List<String> getErrors(String attribute) {
+        //return this.errors;
+        return this.errors.get(attribute);
     }
     
     public void addValidator(IValidation val) {
@@ -41,7 +55,7 @@ public class Validator {
         for ( IValidation val : this.validators ) {
             if ( val.validate() == false ) {
                 ret = false;
-                this.addError(val.getError());
+                this.addError(val.getAttribute(), val.getError());
             }
         }
         return ret;

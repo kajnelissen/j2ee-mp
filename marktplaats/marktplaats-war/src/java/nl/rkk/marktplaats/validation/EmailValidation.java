@@ -6,25 +6,28 @@
 
 package nl.rkk.marktplaats.validation;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 /**
  *
  * @author Kaj
  */
-public class RequiredValidation extends AbstractValidation {
+public class EmailValidation extends AbstractValidation {
     
     private String param;
     
-    public RequiredValidation(String attribute, String param) {
+    public EmailValidation(String attribute, String param) {
         super(attribute);
         this.param = param;
     }
     
     @Override
     public boolean validate() {
-        if ( this.param.length() > 0 ) {
+        EmailValidator val = EmailValidator.getInstance();
+        if ( val.isValid(this.param) ) {
             return true;
         } else {
-            this.addError("Required field is empty.");
+            this.addError("E-mail address is invalid.");
             return false;
         }
     }
