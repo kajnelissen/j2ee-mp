@@ -25,11 +25,12 @@
                     <table>
                         <thead>
                             <tr class="row-header">
-                                <th colspan="3">Leden</th>
+                                <th colspan="4">Leden</th>
                             </tr>
                             <tr class="row-sub-header">
                                 <th>ID</th>
                                 <th>E-mailadres</th>
+                                <th>Wachtwoord</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                                 <tr>
                                     <td>${user.id}</td>
                                     <td>${user.email}</td>
+                                    <td>${user.password}</td>
                                     <td><a href="/admin/users/delete?id=${user.id}">Verwijder</a></td>
                                 </tr>
 

@@ -23,6 +23,7 @@ import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
 import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.models.UserRole;
+import nl.rkk.marktplaats.security.Encryption;
 import nl.rkk.marktplaats.validation.Validator;
 import nl.rkk.marktplaats.validation.ValidatorFactory;
 import nl.rkk.marktplaats.validation.rules.UserRules;
@@ -100,7 +101,7 @@ public class RegisterServlet extends HttpServlet {
         if ( validator.passes() ) {
             
             String email = input.get("email");
-            String password = BCrypt.hashpw(input.get("password"), BCrypt.gensalt());
+            String password = Encryption.encrypt(input.get("password"));
             users.create(email, password);
 
             // registered user, proceed to login page
@@ -108,7 +109,11 @@ public class RegisterServlet extends HttpServlet {
             
         } else {
             
-            for ( String error : validator.getErrors() ) {
+            for ( String error : validator.getErrors("email") ) {
+                out.println(error);
+            }
+            out.println("<hr />");
+            for ( String error : validator.getErrors("password") ) {
                 out.println(error);
             }
             

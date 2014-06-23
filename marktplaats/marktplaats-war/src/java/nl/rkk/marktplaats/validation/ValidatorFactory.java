@@ -27,17 +27,17 @@ public class ValidatorFactory {
         
         for ( String key : keys ) {
             for ( String rule : rules.get(key) ) {
-                validator.addValidator(createValidator(rule, input.get(key)));
+                validator.addValidator(createValidator(key, rule, input.get(key)));
             }
         }
         
         return validator;
     }
     
-    public static IValidation createValidator(String rule, String param) {
+    public static IValidation createValidator(String attribute, String rule, String param) {
         switch ( rule ) {
             case "required":
-                return new RequiredValidation(param);
+                return new RequiredValidation(attribute, param);
         }
         return null;
     }

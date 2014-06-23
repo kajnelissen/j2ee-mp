@@ -14,7 +14,8 @@ public class RequiredValidation extends AbstractValidation {
     
     private String param;
     
-    public RequiredValidation(String param) {
+    public RequiredValidation(String attribute, String param) {
+        super(attribute);
         this.param = param;
     }
     

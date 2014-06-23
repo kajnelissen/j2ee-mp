@@ -18,4 +18,8 @@ public interface IValidation {
     
     public String getError();
     
+    public void setAttribute(String attribute);
+    
+    public String getAttribute();
+    
 }

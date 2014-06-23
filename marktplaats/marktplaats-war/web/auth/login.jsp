@@ -15,11 +15,20 @@
         
             <h1>Inloggen</h1>
 
-            <form method="post" action="/login">
+            <form method="post" action="/marktplaats-war/login">
                 <ul>
                     <li>
                         <label>E-mailadres:</label>
-                        <input type="text" name="email" placeholder="E-mailadres" />
+                        <c:choose>
+                            <c:when test="${empty hasEmailErrors}">
+                                 <input type="text" name="email" placeholder="E-mailadres" />
+                            </c:when>
+                            <c:otherwise>
+                                <input type="text" name="email" placeholder="E-mailadres" class="error" />
+                                <span class="error">${formErrors.get('email')}</span>
+                            </c:otherwise>
+                        </c:choose>
+                       
                     </li>
                     <li>
                         <label>Wachtwoord:</label>

@@ -12,12 +12,12 @@ package nl.rkk.marktplaats.validation;
  */
 public class ValidationFactory {
     
-    public IValidation create(String validator, Object param) {
+    public IValidation create(String attribute, String validator, Object param) {
         
         switch ( validator ) {
             
             case "required":
-                return new RequiredValidation(param.toString());
+                return new RequiredValidation(attribute, param.toString());
             
         }
         
