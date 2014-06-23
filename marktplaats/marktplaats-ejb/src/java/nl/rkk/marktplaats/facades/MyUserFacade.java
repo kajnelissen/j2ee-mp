@@ -6,9 +6,11 @@
 
 package nl.rkk.marktplaats.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.models.UserRole;
 
@@ -46,8 +48,18 @@ public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacade
     
     @Override
     public MyUser findUserByCredentials(String email, String password) {
-        
-        return null;
+        TypedQuery<MyUser> query = this.em.createNamedQuery("User.findByCredentials", MyUser.class);
+        query.setParameter("email", email);
+        query.setParameter("password", password);
+        return query.getSingleResult();
+    }
+    
+    @Override
+    public boolean exists(String email) {
+        TypedQuery<MyUser> query = this.em.createNamedQuery("User.findByEmail", MyUser.class);
+        query.setParameter("email", email);
+        List<MyUser> users = query.getResultList();
+        return users.size() > 0;
     }
     
 }

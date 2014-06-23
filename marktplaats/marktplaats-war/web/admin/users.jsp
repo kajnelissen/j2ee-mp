@@ -8,37 +8,47 @@
         <nav id="crumbs">
             <ul>
                 <li><a href="/marktplaats-war">Index</a></li>
-                <li><a href="/marktplaats-war/login" class="current">Inloggen</a></li>
+                <li><a href="#">Admin</a></li>
+                <li><a href="/marktplaats-war/admin/users" class="current">Leden</a></li>
             </ul>
         </nav>
         
         <article>
         
             <h1>Leden</h1>
+            
+            <c:choose>
+                <c:when test="${empty members}">
+                    <p>Er zijn nog geen leden.</p>
+                </c:when>
+                <c:otherwise>
+                    <table>
+                        <thead>
+                            <tr class="row-header">
+                                <th colspan="3">Leden</th>
+                            </tr>
+                            <tr class="row-sub-header">
+                                <th>ID</th>
+                                <th>E-mailadres</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="user" items="${members}">
 
-            <table>
-                <thead>
-                    <tr class="row-header">
-                        <th colspan="3">Leden</th>
-                    </tr>
-                    <tr class="row-sub-header">
-                        <th>ID</th>
-                        <th>E-mailadres</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="user" items="${members}">
-           
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.email}</td>
-                            <td><a href="/admin/users/delete?id=${user.id}">Verwijder</a></td>
-                        </tr>
+                                <tr>
+                                    <td>${user.id}</td>
+                                    <td>${user.email}</td>
+                                    <td><a href="/admin/users/delete?id=${user.id}">Verwijder</a></td>
+                                </tr>
 
-                    </c:forEach>
-                </tbody>
-            </table>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+            </c:choose>
+
+            
         
         </article>
         

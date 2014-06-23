@@ -1,53 +1,3 @@
-body > header {
-
-	/*
-	 *	Base styles for this element.
-	 */
-
-	
-
-	/*
-	 *	Resolution specific styles for this element.
-	 */
-
-	@media only screen and (min-width: 30em) {
-
-
-
-	}
-
-	@media only screen and (min-width: 40em) {
-
-		
-		
-	}
-
-	@media only screen and (min-width: 50em) {
-
-		
-		
-	}
-
-	@media only screen and (min-width: 60em) {
-
-		
-		
-	}
-
-	@media only screen and (min-width: 70em) {
-
-		
-		
-	}
-
-	@media only screen and (min-width: 80em) {
-
-		
-		
-	}
-
-}
-
 table {
     /*border-collapse: collapse;*/
     border-collapse: separate; 
@@ -66,7 +16,7 @@ table {
     }
 
     th {
-        background-color: $color-emerald;
+        background-color: $color-pickled-bluewood;
         color: #fff;
     }
 
@@ -80,7 +30,7 @@ table {
     }*/
 
     tr.row-header {
-        background-color: $color-nephritis;
+        background-color: $color-ebony-clay;
         color: #fff;
 
         td, th {
@@ -89,12 +39,12 @@ table {
         }
 
         th {
-            background-color: $color-nephritis;
+            background-color: $color-ebony-clay;
         }
     }
 
     tr.row-sub-header {
-        background-color: $color-emerald;
+        background-color: $color-pickled-bluewood;
         color: #fff;
 
         td, th {
@@ -201,63 +151,3 @@ table {
     }
 
 }
-
-
-/*.angle-90 {
-
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    writing-mode: lr-tb;
-
-}*/
-
-.typechart {
-
-    /*border-spacing: 0;
-    border-collapse: collapse;
-
-    td {
-        
-        border: 1px solid black;
-    }*/
-
-    /*tr.row-sub-header {
-
-        td, th {
-            padding: 0;
-            text-align: center;
-        }
-    }*/
-
-    .se {
-
-        background-color: #2ECC71;
-
-    }
-
-    .immune {
-
-        background-color: #34495E;
-
-    }
-
-    .nve {
-
-        background-color: #E74C3C;
-
-    }
-
-}
-
-/*.evochain {
-
-    width: auto;
-
-    tr {
-        &:nth-child(2n + 1) {
-            background-color: none;
-        }
-    }
-
-}*/

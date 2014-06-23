@@ -38,4 +38,6 @@ public interface MyUserFacadeLocal {
     
     MyUser findUserByCredentials(String email, String password);
     
+    boolean exists(String email);
+    
 }
