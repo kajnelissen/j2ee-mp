@@ -1,22 +1,17 @@
-<%-- 
-    Document   : login
-    Created on : 12-jun-2014, 16:51:07
-    Author     : Kaj
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <title>Registreren</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+<t:template>
+    <jsp:body>
+        
+        <nav id="crumbs">
+            <ul>
+                <li><a href="/marktplaats-war">Index</a></li>
+                <li><a href="/marktplaats-war/register" class="current">Registreren</a></li>
+            </ul>
+        </nav>
+        
+        <article>
         <h1>Registreren</h1>
         
         <form method="post" action="/marktplaats-war/register">
@@ -30,10 +25,10 @@
                     <input type="password" name="password" />
                 </li>
                 <li>
-                    <input type="submit" value="Registreren" />
+                    <input type="submit" value="Registreren" class="btn" />
                 </li>
             </ul>
         </form>
-    </body>
-</html>
 
+    </jsp:body>
+</t:template>

@@ -99,7 +99,7 @@ form {
 		display: inline-block;
 		color: #fff;
 		font-weight: bold;
-		background-color: #00B16A;
+		background-color: $color-ebony-clay;
 		padding: 0 1rem;
 		margin: 1rem 0 0 0;
 		/*@include height(2.5);*/
@@ -135,13 +135,12 @@ form {
 	input[type="submit"] {
 
 		display: block;
-		/*padding: 0.5rem;*/
 		margin: 1rem 0;
 		color: #fff;
 		font-weight: bold;
 		border: none;
 		border-radius: $default-radius;
-		background-color: #EF4836;
+		background-color: $color-fire-bush;
 		/*@include height(2.5);*/
 
 	}
@@ -304,5 +303,50 @@ form {
 		@include line-height(2.5);
 
 	}
+
+}
+
+#search-form {
+
+    @include height(4);
+
+    input, a {
+        display: inline-block;
+        float: right;
+    }
+
+    input[type="text"] {
+        margin-top: 0.5rem;
+        background-color: #fff;
+        @include height(3);
+        border-radius: 0;
+        -webkit-border-top-left-radius: $default-radius;
+        -webkit-border-bottom-left-radius: $default-radius;
+        -moz-border-radius-topleft: $default-radius;
+        -moz-border-radius-bottomleft: $default-radius;
+        border-top-left-radius: $default-radius;
+        border-bottom-left-radius: $default-radius;
+        width: initial;
+        margin-right: 0;
+    }
+
+    input[type="submit"] {
+        margin: 0.5rem 1rem 0 0;
+        background: #00B16A url('/img/search.svg') no-repeat center center;
+        background-size: auto 50%;
+        @include width(3);
+        @include height(3);
+        border-radius: 0;
+        -webkit-border-top-right-radius: $default-radius;
+        -webkit-border-bottom-right-radius: $default-radius;
+        -moz-border-radius-topright: $default-radius;
+        -moz-border-radius-bottomright: $default-radius;
+        border-top-right-radius: $default-radius;
+        border-bottom-right-radius: $default-radius;
+
+        &:hover {
+            background-color: #3498DB;
+        }
+    }
 
 }

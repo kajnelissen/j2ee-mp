@@ -43,8 +43,8 @@ img {
 
 a {
     text-decoration: none;
-    border-bottom: 1px dotted $color-wisteria;
-    color: $color-wisteria;
+    border-bottom: 1px dotted $color-curious-blue;
+    color: $color-curious-blue;
 
     &:hover {
         color: #000;
@@ -85,24 +85,4 @@ a {
 *, *:before, *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
-
-.color-turquoise { @include hoverable($color-turquoise, $color-greensea); }
-.color-emerald { @include hoverable($color-emerald, $color-nephritis); }
-.color-peterriver { @include hoverable($color-peterriver, $color-belizehole); }
-.color-amethyst { @include hoverable($color-amethyst, $color-wetasphalt); }
-.color-wetasphalt { @include hoverable($color-wetasphalt, $color-midnightblue); }
-.color-sunflower { @include hoverable($color-sunflower, $color-orange); }
-.color-carrot { @include hoverable($color-carrot, $color-pumpkin); }
-.color-alizarin { @include hoverable($color-alizarin, $color-pomegranate); }
-.color-clouds { @include hoverable($color-clouds, $color-silver); }
-.color-concrete { @include hoverable($color-concrete, $color-asbestos); }
-
-// .icon {
-//     position: absolute;
-//     display: table-cell;
-//     text-align: center;
-//     vertical-align: middle;
-//     height: 100%;
-//     border: 1px solid #000;
-// }
 

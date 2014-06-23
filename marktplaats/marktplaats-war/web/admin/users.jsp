@@ -1,30 +1,48 @@
-<%-- 
-    Document   : users
-    Created on : 13-jun-2014, 13:35:29
-    Author     : Kaj
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Gebruikers</h1>
+<t:template>
+    <jsp:body>
         
-        <ul>
+        <nav id="crumbs">
+            <ul>
+                <li><a href="/marktplaats-war">Index</a></li>
+                <li><a href="/marktplaats-war/login" class="current">Inloggen</a></li>
+            </ul>
+        </nav>
         
-        <c:forEach var="user" items="${members}">
-           
-            <li>${user.email}</li>
+        <article>
+        
+            <h1>Leden</h1>
 
-        </c:forEach>
+            <table>
+                <thead>
+                    <tr class="row-header">
+                        <th colspan="3">Leden</th>
+                    </tr>
+                    <tr class="row-sub-header">
+                        <th>ID</th>
+                        <th>E-mailadres</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="user" items="${members}">
+           
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.email}</td>
+                            <td><a href="/admin/users/delete?id=${user.id}">Verwijder</a></td>
+                        </tr>
+
+                    </c:forEach>
+                </tbody>
+            </table>
         
-        </ul>
+        </article>
         
-    </body>
-</html>
+        
+    </jsp:body>
+</t:template>
+        

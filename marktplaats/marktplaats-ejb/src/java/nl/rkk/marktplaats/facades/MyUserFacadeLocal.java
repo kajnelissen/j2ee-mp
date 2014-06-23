@@ -36,4 +36,6 @@ public interface MyUserFacadeLocal {
     
     boolean create(String email, String password, UserRole type);
     
+    MyUser findUserByCredentials(String email, String password);
+    
 }

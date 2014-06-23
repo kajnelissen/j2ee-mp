@@ -44,4 +44,10 @@ public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacade
         return true;
     }
     
+    @Override
+    public MyUser findUserByCredentials(String email, String password) {
+        
+        return null;
+    }
+    
 }
