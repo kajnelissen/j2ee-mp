@@ -8,25 +8,20 @@ package nl.rkk.marktplaats.servlets.ads;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
-import nl.rkk.marktplaats.security.Encryption;
-import nl.rkk.marktplaats.validation.Validator;
-import nl.rkk.marktplaats.validation.ValidatorFactory;
-import nl.rkk.marktplaats.validation.rules.AdRules;
-import nl.rkk.marktplaats.validation.rules.UserRules;
+import nl.rkk.marktplaats.models.Ad;
 
 /**
  *
- * @author Kaj
+ * @author Roy
  */
-public class AddAdServlet extends HttpServlet {
+public class AllAdsServlet extends HttpServlet {
     
     @EJB
     private AdFacadeLocal ads;
@@ -48,10 +43,10 @@ public class AddAdServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddAdServlet</title>");            
+            out.println("<title>Servlet ShowAdServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddAdServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ShowAdServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,53 +66,24 @@ public class AddAdServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
-        
+        List<Ad> ads = this.ads.findAll();
+        request.setAttribute("ads", ads);
+        getServletContext().getRequestDispatcher("/ads/ads.jsp").forward(request, response);
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param response servlet respe
-     * @throws ServletException if a servonslet-specific error occurs
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //processRequest(request, response);
-        
-        Dictionary<String, String> input = new Hashtable<>();
-        input.put("title", request.getParameter("titel"));
-        input.put("description", request.getParameter("beschrijving"));
-        input.put("category", request.getParameter("categorie"));
-        input.put("price", request.getParameter("prijs"));
-         
-        Validator validator = ValidatorFactory.make(AdRules.rules, input);
-       
-        if ( validator.passes() ) {
-            
-            String titel= request.getParameter("titel");
-            String beschrijving = request.getParameter("beschrijving");
-            String categorie = request.getParameter("categorie");
-            String prijs = request.getParameter("prijs");
-         
-            ads.create(titel, beschrijving, categorie, Double.parseDouble(prijs.replace(',','.')));
-            // advertentie aangemaakt, doorverwezen naar advertentie pagina
-            getServletContext().getRequestDispatcher("/ads/ads.jsp").forward(request, response);   
-            
-        } else {
-            
-            request.setAttribute("errorMsg", "Gegevens incorrect!");
-            request.setAttribute("formErrors", validator.getErrors());
-            getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);  
-            
-        }        
-           
-        
-        
-         //getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response); 
-        }
+       // processRequest(request, response);
+    }
 
     /**
      * Returns a short description of the servlet.
@@ -128,5 +94,11 @@ public class AddAdServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private class ads {
+
+        public ads() {
+        }
+    }
 
 }

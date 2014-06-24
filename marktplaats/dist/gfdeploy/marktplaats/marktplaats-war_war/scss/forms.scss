@@ -1,0 +1,155 @@
+.feedback {
+	display: block;
+	width: 100%;
+	padding: 1em;
+	/*border-radius: 0.5em;*/
+	color: #fff;
+	margin: 0;
+}
+
+.flash {
+	@extend .feedback;
+	background-color: $color-flash;
+}
+
+.error {
+	@extend .feedback;
+	background-color: $color-error;
+}
+
+.ok {
+	@extend .feedback;
+	background-color: $color-ok;
+}
+
+form {
+
+	display: block;
+	width: 100%;
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		list-style-type: none;
+	}
+
+	/* The CSS */
+	select {
+	    display: block;
+		width: 100%;
+		padding: 0 1rem;
+		@include line-height(2.5);
+	    margin: 0;
+	    background-color: #eee;
+	    -webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;
+	    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+	    color:#888;
+	    border:none;
+	    outline:none;
+	    display: inline-block;
+	    -webkit-appearance:none;
+	    -moz-appearance:none;
+	    appearance:none;
+	    cursor:pointer;
+	}
+
+	/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	    select {padding-right:18px}
+	}
+
+	label {
+
+		display: inline-block;
+		color: #fff;
+		font-weight: bold;
+		background-color: $color-ebony-clay;
+		padding: 0 1rem;
+		margin: 1rem 0 0 0;
+		/*@include height(2.5);*/
+		@include line-height(2.5);
+		-webkit-border-top-left-radius: $default-radius;
+		-webkit-border-top-right-radius: $default-radius;
+		-moz-border-radius-topleft: $default-radius;
+		-moz-border-radius-topright: $default-radius;
+		border-top-left-radius: $default-radius;
+		border-top-right-radius: $default-radius;
+
+	}
+
+	input[type="text"], input[type="password"] {
+
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
+		/*margin-top: 1rem;*/
+		border: none;
+		-webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;
+		background-color: #F2F1EF;
+		/*@include height(3);*/
+		@include line-height(3);
+
+	}
+
+	input[type="submit"] {
+
+		display: block;
+		margin: 1rem 0;
+		color: #fff;
+		font-weight: bold;
+		border: none;
+		border-radius: $default-radius;
+		background-color: $color-fire-bush;
+		/*@include height(2.5);*/
+
+	}
+
+	textarea {
+
+		display: block;
+		width: 100%;
+		padding: 1rem;
+		@include height(8);
+		border: 1px solid #BDC3C7;
+		/*-webkit-border-radius: $default-radius;
+		-webkit-border-top-left-radius: 0;
+		-moz-border-radius: $default-radius;
+		-moz-border-radius-topleft: 0;
+		border-radius: $default-radius;
+		border-top-left-radius: 0;*/
+		border-radius: $default-radius;
+		background-color: #F2F1EF;
+
+	}
+        
+        input.error, textarea.error {
+            border: 1px solid $color-flamingo;
+            -webkit-border-radius: $default-radius;
+            -webkit-border-top-left-radius: 0;
+            -webkit-border-top-right-radius: 0;
+            -moz-border-radius: $default-radius;
+            -moz-border-radius-topleft: 0;
+            -moz-border-radius-topright: 0;
+            border-radius: $default-radius;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            background-color: #F2F1EF;
+            color: #000;
+        }
+
+}

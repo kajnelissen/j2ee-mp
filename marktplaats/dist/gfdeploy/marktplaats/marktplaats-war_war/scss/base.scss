@@ -1,0 +1,88 @@
+html {
+    background-color: #fff;
+    font-size: 100%;
+}
+
+body {
+
+    /*
+     *  Base styles for this element.
+     */
+
+    padding: 0;
+    @include font-size(1);
+    @include line-height(1.5);
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 400;
+
+    /*
+     *  Resolution specific styles for this element.
+     */
+
+    @media only screen and (min-width: 100em) {
+
+        @include font-size(1.125);
+        @include line-height(1.75);
+        
+    }
+
+}
+
+h1, h2, h3, h4, h5, h6, hgroup,
+ul, ol, dd,
+p, figure,
+pre, table, fieldset, hr,
+div, .tab-group {
+    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px dotted $color-curious-blue;
+    color: $color-curious-blue;
+
+    &:hover {
+        color: #000;
+        border-bottom: 1px solid #000;
+    }
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.borderless {
+    border: none;
+}
+
+.no-pad {
+    padding: none;
+}
+
+.btn {
+    text-decoration: none;
+    border: none;
+    border-radius: 0.5rem;
+    padding: $default-radius;
+    font-weight: 600;
+
+    &:hover {
+        border: none;
+        color: #fff;
+    }
+}
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+

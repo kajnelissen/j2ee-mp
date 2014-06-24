@@ -31,4 +31,8 @@ public interface AdFacadeLocal {
 
     int count();
     
+    public List<Ad> findAdvertisment(Integer id);
+
+    public void create(String titel, String beschrijving, String categorie, Double prijs);
+    
 }

@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+@mixin hoverable($normal, $hover, $text : #fff) {
+    color: $text;
+    background-color: $normal;
+    &:hover {
+        background-color: $hover;
+    }
+}
+
+@mixin font-size($sizeValue: 1) {
+    font-size: ($sizeValue * 16) + px;
+    font-size: $sizeValue + rem;
+}
+
+@mixin line-height($sizeValue: 1.5) {
+    line-height: ($sizeValue * 16) + px;
+    line-height: $sizeValue + rem;
+}
+
+@mixin height($sizeValue: 1.5) {
+    height: ($sizeValue * 16) + px;
+    height: $sizeValue + rem;
+}
+
+@mixin width($sizeValue: 1.5) {
+    width: ($sizeValue * 16) + px;
+    width: $sizeValue + rem;
+}
+
+@mixin top($value) {
+    top: ($value * 16) + px;
+    top: $value + rem;
+}
+
+@mixin right($value) {
+    right: ($value * 16) + px;
+    right: $value + rem;
+}
+
+@mixin bottom($value) {
+    bottom: ($value * 16) + px;
+    bottom: $value + rem;
+}
+
+@mixin left($value) {
+    left: ($value * 16) + px;
+    left: $value + rem;
+}
+
+@mixin m-t($value) {
+    margin-top: ($value * 16) + px;
+    margin-top: $value + rem;
+}
+
+@mixin m-r($value) {
+    margin-right: ($value * 16) + px;
+    margin-right: $value + rem;
+}
+
+@mixin m-b($value) {
+    margin-bottom: ($value * 16) + px;
+    margin-bottom: $value + rem;
+}
+
+@mixin m-l($value) {
+    margin-left: ($value * 16) + px;
+    margin-left: $value + rem;
+}
+
+@mixin m-a($top, $right, $bottom, $left) {
+    margin: ($value * 16) + px;
+    margin: $top + rem ;
+}

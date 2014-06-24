@@ -43,6 +43,8 @@ public class ValidatorFactory {
                 return new RequiredValidation(attribute, param);
             case "email":
                 return new EmailValidation(attribute, param);
+            case "money":
+                return new MoneyValidation(attribute, param);
         }
         return null;
     }

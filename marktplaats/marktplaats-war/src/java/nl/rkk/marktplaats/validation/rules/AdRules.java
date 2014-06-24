@@ -8,25 +8,22 @@ package nl.rkk.marktplaats.validation.rules;
 
 import java.util.Arrays;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 
+
 /**
  *
- * @author Kaj
+ * @author Roy
  */
-public final class UserRules {
+public final class AdRules {
     
     public static final Dictionary<String, List<String>> rules;
-    
     static {
         rules = new Hashtable<>();
-        rules.put("firstName", Arrays.asList("required"));
-        rules.put("lastName", Arrays.asList("required"));
-        rules.put("email", Arrays.asList("required|email"));
-        rules.put("password", Arrays.asList("required"));
-        
+        rules.put("title", Arrays.asList("required"));
+        rules.put("description", Arrays.asList("required"));
+        rules.put("category", Arrays.asList("required"));
+        rules.put("price", Arrays.asList("required|money"));
     }
-    
 }
