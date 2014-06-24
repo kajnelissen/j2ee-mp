@@ -12,8 +12,16 @@ package nl.rkk.marktplaats.models;
  */
 public enum UserRole {
     
-    Admin,
+    Admin ("admin"), User ("user");
     
-    User
+    private final String role;
+    
+    UserRole(String role) {
+        this.role = role;
+    }
+    
+    public String getRole() {
+        return this.role;
+    }
     
 }

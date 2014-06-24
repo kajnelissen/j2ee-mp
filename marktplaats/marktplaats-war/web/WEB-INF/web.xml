@@ -24,6 +24,10 @@
         <servlet-name>MemberlistServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.admin.MemberlistServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminSeedServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.servlets.seeders.AdminSeedServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>MemberlistServlet</servlet-name>
         <url-pattern>/admin/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSeedServlet</servlet-name>
+        <url-pattern>/seed/admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
