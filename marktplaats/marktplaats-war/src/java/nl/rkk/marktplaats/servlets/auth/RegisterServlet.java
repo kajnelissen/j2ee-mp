@@ -101,11 +101,17 @@ public class RegisterServlet extends HttpServlet {
         if ( validator.passes() ) {
             
             String email = input.get("email");
-            String password = Encryption.encrypt(input.get("password"));
-            users.create(email, password);
+            
+            if ( !this.users.exists(email) ) {
+                String password = Encryption.encrypt(input.get("password"));
+                users.create(email, password);
 
-            // registered user, proceed to login page
-            getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+                // registered user, proceed to login page
+                getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
+            } else {
+                request.setAttribute("errorMsg", "Dit e-mailadres is al geregistreerd. Misschien heb je al een account?");
+                getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);  
+            }
             
         } else {
             
