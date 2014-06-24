@@ -4,40 +4,28 @@
  * and open the template in the editor.
  */
 
-package nl.rkk.marktplaats.servlets.auth;
+package nl.rkk.marktplaats.servlets.seeders;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
-import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.models.UserRole;
 import nl.rkk.marktplaats.security.Encryption;
-import nl.rkk.marktplaats.validation.Validator;
-import nl.rkk.marktplaats.validation.ValidatorFactory;
-import nl.rkk.marktplaats.validation.rules.UserRules;
-//import nl.rkk.marktplaats.models.UserRole;
 
 /**
  *
  * @author Kaj
  */
-public class RegisterServlet extends HttpServlet {
-
+public class AdminSeedServlet extends HttpServlet {
+    
     @EJB
     private MyUserFacadeLocal users;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -55,10 +43,10 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
+            out.println("<title>Servlet AdminSeedServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminSeedServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,7 +64,13 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);
+        //processRequest(request, response);
+        String password = Encryption.encrypt("admin");
+        this.users.create("admin@j2ee.nl", password, UserRole.Admin);
+
+        // registered user, proceed to login page
+        request.setAttribute("notification", "Er is een admin user geseed. Log in met email = admin@j2ee.nl en ww = admin voor deze gebruiker.");
+        getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
     }
 
     /**
@@ -90,37 +84,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        
-        Dictionary<String, String> input = new Hashtable<>();
-        input.put("email", request.getParameter("email"));
-        input.put("password", request.getParameter("password"));
-        
-        Validator validator = ValidatorFactory.make(UserRules.rules, input);
-        
-        if ( validator.passes() ) {
-            
-            String email = input.get("email");
-            
-            if ( !this.users.exists(email) ) {
-                String password = Encryption.encrypt(input.get("password"));
-                users.create(email, password, UserRole.User);
-
-                // registered user, proceed to login page
-                request.setAttribute("notification", "Je bent nu geregistreerd!");
-                getServletContext().getRequestDispatcher("/auth/login.jsp").forward(request, response);   
-            } else {
-                request.setAttribute("errorMsg", "Dit e-mailadres is al geregistreerd. Misschien heb je al een account?");
-                getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);  
-            }
-            
-        } else {
-            
-            request.setAttribute("errorMsg", "Gegevens incorrect!");
-            request.setAttribute("formErrors", validator.getErrors());
-            getServletContext().getRequestDispatcher("/auth/register.jsp").forward(request, response);  
-            
-        }        
+        processRequest(request, response);
     }
 
     /**
@@ -130,7 +94,7 @@ public class RegisterServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Register servlet";
+        return "Short description";
     }// </editor-fold>
 
 }

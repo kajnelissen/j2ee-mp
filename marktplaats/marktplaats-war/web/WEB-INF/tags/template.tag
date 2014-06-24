@@ -28,6 +28,7 @@
                     <c:if test="${not empty sessionScope.currentUser}">
                         <span>Welkom, ${sessionScope.currentUser.email}</span>
                         <a href="/marktplaats-war/logout">Uitloggen</a> 
+                        <span>${sessionScope.currentUser.type.role}</span>
                     </c:if>
                     <c:if test="${empty sessionScope.currentUser}">
                         <span>Welkom, Gast</span>  
