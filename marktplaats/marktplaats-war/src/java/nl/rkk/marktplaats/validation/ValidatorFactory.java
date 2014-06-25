@@ -43,6 +43,10 @@ public class ValidatorFactory {
                 return new RequiredValidation(attribute, param);
             case "email":
                 return new EmailValidation(attribute, param);
+            case "zipcode":
+                return new ZipCodeValidation(attribute, param);
+            case "streetnumber":
+                return new StreetNumberValidation(attribute, param);
         }
         return null;
     }
