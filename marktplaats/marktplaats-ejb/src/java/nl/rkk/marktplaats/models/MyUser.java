@@ -7,12 +7,14 @@
 package nl.rkk.marktplaats.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -42,6 +44,12 @@ public class MyUser implements Serializable {
     private String password;
     
     private UserRole type;
+    
+    @OneToMany()
+    private Collection<Ad> ads;
+    
+    @OneToMany()
+    private Collection<Bid> bids;
     
     public MyUser() {
         

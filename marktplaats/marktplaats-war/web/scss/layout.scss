@@ -1,6 +1,7 @@
 body {
 
-	background-color: #fff;
+	/*background-color: #fff;*/
+        background-color: #DADFE1;
 
 	@media only screen and (min-width: 90em) {
 
@@ -23,16 +24,22 @@ body {
 	/*
 	 *	Resolution specific styles for this element.
 	 */
+        
+        @media only screen and (min-width: 80em) {
+
+		width: 85%;
+		
+	}
 
 	@media only screen and (min-width: 90em) {
 
-		width: 95%;
+		width: 80%;
 		
 	}
 
 	@media only screen and (min-width: 100em) {
 
-		width: 90%;
+		width: 75%;
 		
 	}
 
@@ -331,7 +338,6 @@ main {
 	@media only screen and (min-width: 80em) {
 
 		padding: 1rem;
-		padding-top: 0;
 		float: left;
 
 	}
@@ -445,8 +451,8 @@ main {
 	}
 
 	@media only screen and (min-width: 80em) {
-		width: 80%;
-		float: left;
+		/*width: 80%;
+		float: left;*/
 	}
 
 

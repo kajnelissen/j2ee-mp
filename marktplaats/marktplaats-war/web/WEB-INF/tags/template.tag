@@ -28,7 +28,8 @@
                     <c:if test="${not empty sessionScope.currentUser}">
                         <span>Welkom, ${sessionScope.currentUser.email}</span>
                         <a href="/marktplaats-war/logout">Uitloggen</a> 
-                        <span>${sessionScope.currentUser.type.role}</span>
+                        <a href="/marktplaats-war/ads/create">Plaats advertentie</a>  
+                        <a href="/marktplaats-war/user/ads">Eigen advertenties</a> 
                     </c:if>
                     <c:if test="${empty sessionScope.currentUser}">
                         <span>Welkom, Gast</span>  
@@ -51,11 +52,6 @@
                 <jsp:doBody/>
             </main>
         </div>
-        <nav class="sidebar">
-            <h2>Menu</h2>
-            <a href="#">Link</a>
-            <a href="#">Link</a>
-        </nav>
     </div>
             
     <footer class="page-block-container">
