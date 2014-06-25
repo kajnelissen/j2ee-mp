@@ -41,7 +41,7 @@
                                     <td>${user.id}</td>
                                     <td>${user.email}</td>
                                     <td>${user.password}</td>
-                                    <td><a href="/admin/users/delete?id=${user.id}">Verwijder</a></td>
+                                    <td><a href="/marktplaats-war/admin/users/delete?id=${user.id}">Verwijder</a></td>
                                 </tr>
 
                             </c:forEach>

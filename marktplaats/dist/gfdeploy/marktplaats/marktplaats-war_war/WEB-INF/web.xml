@@ -17,8 +17,8 @@
         <servlet-class>nl.rkk.marktplaats.servlets.ads.AddAdServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>nl.rkk.marktplaats.admin.UserServlet</servlet-class>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.admin.DeleteUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MemberlistServlet</servlet-name>
@@ -45,8 +45,8 @@
         <url-pattern>/ads/create</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/admin/user</url-pattern>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/admin/users/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MemberlistServlet</servlet-name>
