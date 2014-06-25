@@ -66,6 +66,14 @@ public class MyUser implements Serializable {
         this.setPassword(password);
         this.setType(type);
     }
+    
+    public MyUser(String email, String password, UserRole type, String firstName, String lastName) {
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setType(type);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+    }
 
     public Integer getId() {
         return id;

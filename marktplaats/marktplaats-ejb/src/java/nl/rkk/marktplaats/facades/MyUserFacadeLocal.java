@@ -32,9 +32,11 @@ public interface MyUserFacadeLocal {
 
     int count();
     
-    boolean create(String email, String password);
+    void create(String email, String password);
     
-    boolean create(String email, String password, UserRole type);
+    void create(String email, String password, UserRole type);
+    
+    void create(String email, String password, UserRole type, String firstName, String lastName);
     
     MyUser findUserByCredentials(String email, String password);
     
