@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
-import nl.rkk.marktplaats.facades.CategoryFacadeLocal;
-import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.security.Encryption;
 import nl.rkk.marktplaats.validation.Validator;
 import nl.rkk.marktplaats.validation.ValidatorFactory;
@@ -33,7 +31,6 @@ public class AddAdServlet extends HttpServlet {
     
     @EJB
     private AdFacadeLocal ads;
-    private CategoryFacadeLocal catogory;
     private Object user;
 
     /**
@@ -75,7 +72,7 @@ public class AddAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-               
+        
         HttpSession session = request.getSession(true);
         Object check = session.getAttribute("currentUser");
             if (check == null) {
@@ -99,12 +96,6 @@ public class AddAdServlet extends HttpServlet {
             throws ServletException, IOException {
        //processRequest(request, response);
         
-               
-        MyUser user = (MyUser) request.getSession(true).getAttribute("currentUser");
-        if(user == null){
-             response.sendRedirect("/marktplaats-war/login");
-        }
-        
         Dictionary<String, String> input = new Hashtable<>();
         input.put("title", request.getParameter("titel"));
         input.put("description", request.getParameter("beschrijving"));
@@ -120,7 +111,7 @@ public class AddAdServlet extends HttpServlet {
             String categorie = request.getParameter("categorie");
             String prijs = request.getParameter("prijs");
          
-            ads.create(user, titel, beschrijving, categorie, Double.parseDouble(prijs.replace(',','.')));
+            ads.create(titel, beschrijving, categorie, Double.parseDouble(prijs.replace(',','.')));
             // advertentie aangemaakt, doorverwezen naar advertentie pagina
             getServletContext().getRequestDispatcher("/ads/ads.jsp").forward(request, response);   
             
