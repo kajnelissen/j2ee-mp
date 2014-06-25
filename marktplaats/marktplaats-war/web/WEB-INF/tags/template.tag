@@ -12,11 +12,12 @@
     
     <header>
             <div class="page-block-container clearfix">
-                <a href="/" class="logo-top"><h1>J2EE Marktplaats</h1></a>
+                <a href="/marktplaats-war" class="logo-top"><h1>J2EE Marktplaats</h1></a>
                 <nav id="top-nav">
                     <ul>
                         <li><a href="/marktplaats-war/ads">Advertenties</a></li>
                         <li><a href="/marktplaats-war/admin/users">Leden</a></li>
+                        <li><a href="/marktplaats-war/seed/admin">Seed</a></li>
                     </ul>
                 </nav>
             </div>
