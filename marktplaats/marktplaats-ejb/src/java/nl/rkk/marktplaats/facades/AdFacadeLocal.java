@@ -9,6 +9,7 @@ package nl.rkk.marktplaats.facades;
 import java.util.List;
 import javax.ejb.Local;
 import nl.rkk.marktplaats.models.Ad;
+import nl.rkk.marktplaats.models.MyUser;
 
 /**
  *
@@ -30,5 +31,7 @@ public interface AdFacadeLocal {
     List<Ad> findRange(int[] range);
 
     int count();
+
+    public void create(String titel, String beschrijving, String categorie, Double prijs, MyUser user);
     
 }

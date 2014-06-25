@@ -47,6 +47,8 @@ public class ValidatorFactory {
                 return new ZipCodeValidation(attribute, param);
             case "streetnumber":
                 return new StreetNumberValidation(attribute, param);
+            case "money":
+                return new MoneyValidation(attribute, param);
         }
         return null;
     }
