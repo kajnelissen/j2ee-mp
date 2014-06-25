@@ -95,6 +95,8 @@ public class RegisterServlet extends HttpServlet {
         Dictionary<String, String> input = new Hashtable<>();
         input.put("email", request.getParameter("email"));
         input.put("password", request.getParameter("password"));
+        input.put("firstName", request.getParameter("firstName"));
+        input.put("lastName", request.getParameter("lastName"));        
         
         Validator validator = ValidatorFactory.make(UserRules.rules, input);
         
@@ -104,7 +106,9 @@ public class RegisterServlet extends HttpServlet {
             
             if ( !this.users.exists(email) ) {
                 String password = Encryption.encrypt(input.get("password"));
-                users.create(email, password, UserRole.User);
+                String firstName = input.get("firstName");
+                String lastName = input.get("lastName");
+                users.create(email, password, UserRole.User, firstName, lastName);
 
                 // registered user, proceed to login page
                 request.setAttribute("notification", "Je bent nu geregistreerd!");

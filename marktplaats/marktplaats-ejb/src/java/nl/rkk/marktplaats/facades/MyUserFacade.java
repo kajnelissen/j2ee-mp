@@ -33,17 +33,21 @@ public class MyUserFacade extends AbstractFacade<MyUser> implements MyUserFacade
     }
     
     @Override
-    public boolean create(String email, String password) {
+    public void create(String email, String password) {
         MyUser user = new MyUser(email, password);
         this.create(user);
-        return true;
     }
     
     @Override
-    public boolean create(String email, String password, UserRole type) {
+    public void create(String email, String password, UserRole type) {
         MyUser user = new MyUser(email, password, type);
         this.create(user);
-        return true;
+    }
+    
+    @Override
+    public void create(String email, String password, UserRole type, String firstName, String lastName) {
+        MyUser user = new MyUser(email, password, type, firstName, lastName);
+        this.create(user);
     }
     
     @Override

@@ -17,17 +17,17 @@
         
         <form method="post" action="/marktplaats-war/register">
             <ul>
-                <li>
+                    <li>
                         <label>E-mailadres:</label>
                         <c:choose>
                             <c:when test="${empty formErrors.get('email')}">
-                                 <input type="text" name="email" placeholder="E-mailadres" />
+                                 <input type="text" name="email" placeholder="E-mailadres..." />
                             </c:when>
                             <c:otherwise>
                                 <c:forEach var="error" items="${formErrors.get('email')}">
                                     <span class="error">${error}</span>
                                 </c:forEach>
-                                <input type="text" name="email" placeholder="E-mailadres" class="error" />
+                                <input type="text" name="email" placeholder="E-mailadres..." class="error" />
                             </c:otherwise>
                         </c:choose>
                     </li>
@@ -42,6 +42,34 @@
                                     <span class="error">${error}</span>
                                 </c:forEach>
                                 <input type="password" name="password" class="error" />
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                    <li>
+                        <label>Voornaam:</label>
+                        <c:choose>
+                            <c:when test="${empty formErrors.get('firstName')}">
+                                 <input type="text" name="firstName" placeholder="Voornaam..." />
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="error" items="${formErrors.get('firstName')}">
+                                    <span class="error">${error}</span>
+                                </c:forEach>
+                                <input type="text" name="firstName" placeholder="Voornaam..." class="error" />
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                    <li>
+                        <label>Achternaam:</label>
+                        <c:choose>
+                            <c:when test="${empty formErrors.get('lastName')}">
+                                 <input type="text" name="lastName" placeholder="Achternaam..." />
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="error" items="${formErrors.get('lastName')}">
+                                    <span class="error">${error}</span>
+                                </c:forEach>
+                                <input type="text" name="lastName" placeholder="Achternaam..." class="error" />
                             </c:otherwise>
                         </c:choose>
                     </li>

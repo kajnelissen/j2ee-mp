@@ -25,10 +25,11 @@
                     <table>
                         <thead>
                             <tr class="row-header">
-                                <th colspan="4">Leden</th>
+                                <th colspan="5">Leden</th>
                             </tr>
                             <tr class="row-sub-header">
                                 <th>ID</th>
+                                <th>Naam</th>
                                 <th>E-mailadres</th>
                                 <th>Wachtwoord</th>
                                 <th></th>
@@ -39,6 +40,7 @@
 
                                 <tr>
                                     <td>${user.id}</td>
+                                    <td>${user.firstName} ${user.lastName}</td>
                                     <td>${user.email}</td>
                                     <td>${user.password}</td>
                                     <td><a href="/marktplaats-war/admin/users/delete?id=${user.id}">Verwijder</a></td>

@@ -66,7 +66,7 @@ public class AdminSeedServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String password = Encryption.encrypt("admin");
-        this.users.create("admin@j2ee.nl", password, UserRole.Admin);
+        this.users.create("admin@j2ee.nl", password, UserRole.Admin, "Admin", "");
 
         // registered user, proceed to login page
         request.setAttribute("notification", "Er is een admin user geseed. Log in met email = admin@j2ee.nl en ww = admin voor deze gebruiker.");
