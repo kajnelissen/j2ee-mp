@@ -28,6 +28,14 @@
         <servlet-name>AdminSeedServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.servlets.seeders.AdminSeedServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllAdsServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.servlets.ads.AllAdsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowAdServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.servlets.ads.ShowAdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>AdminSeedServlet</servlet-name>
         <url-pattern>/seed/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllAdsServlet</servlet-name>
+        <url-pattern>/ads</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowAdServlet</servlet-name>
+        <url-pattern>/ads/show</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

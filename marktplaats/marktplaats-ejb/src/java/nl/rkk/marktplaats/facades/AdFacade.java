@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import nl.rkk.marktplaats.models.Ad;
+import nl.rkk.marktplaats.models.MyUser;
 
 /**
  *
@@ -27,6 +28,20 @@ public class AdFacade extends AbstractFacade<Ad> implements AdFacadeLocal {
 
     public AdFacade() {
         super(Ad.class);
+    }
+    
+    @Override
+    public void create(String titel, String beschrijving, String categorie, Double prijs, MyUser user){
+    
+        Ad ad = new Ad();
+        
+        ad.setTitle(titel);
+        ad.setDescription(beschrijving);
+        ad.setCategory(categorie);
+        ad.setPrice(prijs);
+        ad.setUser(user);
+        this.create(ad);
+        
     }
     
 }
