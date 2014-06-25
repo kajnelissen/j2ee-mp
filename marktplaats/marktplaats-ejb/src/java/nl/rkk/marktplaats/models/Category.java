@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +27,17 @@ public class Category implements Serializable {
     private Integer id;
     
     private String title;
+
+    public Ad getAd() {
+        return ad;
+    }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
+    }
+    
+    @OneToMany(mappedBy = "category")
+    private Ad ad;
 
     public Integer getId() {
         return id;
