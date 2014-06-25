@@ -7,10 +7,12 @@
 package nl.rkk.marktplaats.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,7 +28,8 @@ public class Category implements Serializable {
     private Integer id;
     
     private String title;
-
+    
+    
     public Integer getId() {
         return id;
     }

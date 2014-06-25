@@ -53,17 +53,14 @@
                     </li>
                     <li>
                         <label>Categorie:</label>
-                        <c:choose>
-                            <c:when test="${empty formErrors.get('category')}">
-                                 <input type="text" name="categorie" />
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach var="error" items="${formErrors.get('category')}">
-                                    <span class="error">${error}</span>
-                                </c:forEach>
-                                <input type="text" name="categorie" class="error" />
-                            </c:otherwise>
-                        </c:choose>
+                        <select name="categorie">
+                            <option>Apparatuur</option>
+                            <option>Sport</option>
+                            <option>Muziek/Film</option>
+                            <option>Auto</option>
+                            <option>Boeken</option>
+                            <option>overige</option>
+                        </select>
                     </li>
                      <li>
                         <label>prijs:</label>

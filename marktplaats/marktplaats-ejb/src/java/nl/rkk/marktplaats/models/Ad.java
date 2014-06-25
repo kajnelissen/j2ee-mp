@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -27,7 +29,28 @@ public class Ad implements Serializable {
     private String title;
     private String description;
     private String category;
-    private Double price;        
+    private Double price; 
+    
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    @ManyToOne()
+    private MyUser user;
+    
+  
+
+    public MyUser getUser() {
+        return user;
+    }
+
+    public void setUser(MyUser user) {
+        this.user = user;
+    }
 
     public String getTitle() {
         return title;
@@ -43,14 +66,6 @@ public class Ad implements Serializable {
     
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-    
-    public void setCategory(String category) {
-       this.category = category;
     }
 
     public Double getPrice() {
