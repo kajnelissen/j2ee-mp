@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.security.Encryption;
 import nl.rkk.marktplaats.validation.Validator;
@@ -30,6 +31,7 @@ public class AddAdServlet extends HttpServlet {
     
     @EJB
     private AdFacadeLocal ads;
+    private Object user;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,8 +73,15 @@ public class AddAdServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
-        
+        HttpSession session = request.getSession(true);
+        Object check = session.getAttribute("currentUser");
+            if (check == null) {
+                response.sendRedirect("/marktplaats-war/login");
+            } else {
+                 getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
+                 
+            }
+       
     }
     /**
      * Handles the HTTP <code>POST</code> method.
