@@ -43,7 +43,6 @@ public class Ad implements Serializable {
     private MyUser user;
     
   
-
     public MyUser getUser() {
         return user;
     }
