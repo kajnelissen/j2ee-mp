@@ -74,7 +74,7 @@ public class ShowAdServlet extends HttpServlet {
         
         Ad ad = this.ads.find(Integer.parseInt(id));
         Collection<Bid> adBids = /*this.bids.findForAd(ad)*/ ad.getBids();
-        Collection<Bid> adBids2 = this.bids.findForAd(ad);
+        //Collection<Bid> adBids2 = this.bids.findForAd(ad);
         request.setAttribute("ad", ad);
         getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response);
     }

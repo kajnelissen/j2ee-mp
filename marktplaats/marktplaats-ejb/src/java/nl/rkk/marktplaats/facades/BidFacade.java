@@ -34,11 +34,18 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
     
     @Override
     public List<Bid> findForAd(Ad ad) {
-        return this.em.createQuery("SELECT b FROM Bid b WHERE b.ad_id = :adId", Bid.class).setParameter("adId", ad.getId()).getResultList();
+        //return this.em.createQuery("SELECT b FROM Bid b WHERE b.ad_id = :adId", Bid.class).setParameter("adId", ad.getId()).getResultList();
         //TypedQuery<Bid> query = this.em.createNamedQuery("Bid.findForAd", Bid.class);
         //query.setParameter("adId", ad.getId());
-        //return null;
+        return null;
         //return query.getResultList();
+    }
+    
+    @Override
+    public void create(Bid bid, Ad ad) {
+        this.create(bid);
+        this.em.persist(bid);
+        this.em.persist(ad);
     }
     
 }

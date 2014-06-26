@@ -33,5 +33,7 @@ public interface BidFacadeLocal {
     int count();
     
     List<Bid> findForAd(Ad ad);
+            
+    void create(Bid bid, Ad ad);
     
 }

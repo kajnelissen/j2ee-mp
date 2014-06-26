@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.facades.BidFacadeLocal;
+import nl.rkk.marktplaats.models.Ad;
 import nl.rkk.marktplaats.models.Bid;
 import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.validation.Validator;
@@ -107,11 +108,14 @@ public class CreateBidServlet extends HttpServlet {
             
             if ( validator.passes() ) {
                 
+                Ad ad = this.ads.find(adId);
+                
                 Bid bid = new Bid();
                 bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
                 bid.setDate(new Timestamp(System.currentTimeMillis()));
                 bid.setUser(user);
-                bid.setAd(this.ads.find(adId));
+                bid.setAd(ad);
+                
                 this.bids.create(bid);
                 
             } else {
