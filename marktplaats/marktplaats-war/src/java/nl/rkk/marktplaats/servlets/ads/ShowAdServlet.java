@@ -70,6 +70,7 @@ public class ShowAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
        String id = request.getParameter("id");
         
         Ad ad = this.ads.find(Integer.parseInt(id));

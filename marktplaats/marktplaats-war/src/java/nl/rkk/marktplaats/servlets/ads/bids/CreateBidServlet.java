@@ -114,11 +114,13 @@ public class CreateBidServlet extends HttpServlet {
                 bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
                 bid.setDate(new Timestamp(System.currentTimeMillis()));
                 bid.setUser(user);
-                bid.setAd(ad);
+                ad.getBids().add(bid);
                 
-                this.bids.create(bid);
+                ads.edit(ad);
                 
             } else {
+                
+                
                 
             }
             
