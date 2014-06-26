@@ -48,4 +48,10 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
         this.em.persist(ad);
     }
     
+    @Override
+    public boolean isHighest(Ad ad, Double amount) {
+        Double highest = this.em.createQuery("SELECT max(b.amount) FROM Bid b WHERE b.ad_id = :adId", Double.class).setParameter("adId", ad.getId()).getSingleResult();
+        return (amount > highest);
+    }
+    
 }

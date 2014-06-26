@@ -36,4 +36,6 @@ public interface BidFacadeLocal {
             
     void create(Bid bid, Ad ad);
     
+    boolean isHighest(Ad ad,Double amount);
+    
 }

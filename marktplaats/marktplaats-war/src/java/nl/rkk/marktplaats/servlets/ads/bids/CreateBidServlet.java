@@ -110,17 +110,41 @@ public class CreateBidServlet extends HttpServlet {
                 
                 Ad ad = this.ads.find(adId);
                 
-                Bid bid = new Bid();
-                bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
-                bid.setDate(new Timestamp(System.currentTimeMillis()));
-                bid.setUser(user);
-                ad.getBids().add(bid);
+                if ( ad.getBids().isEmpty() ) {
+                    
+                    Bid bid = new Bid();
+                    bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
+                    bid.setDate(new Timestamp(System.currentTimeMillis()));
+                    bid.setUser(user);
+                    ad.getBids().add(bid);
+
+                    ads.edit(ad);
+
+                    response.sendRedirect("/marktplaats-war/ads/show?id=" + ad.getId());
+                    
+                } else if ( this.bids.isHighest(ad, Double.parseDouble(input.get("amount").replace(',','.'))) ) {
                 
-                ads.edit(ad);
+                    Bid bid = new Bid();
+                    bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
+                    bid.setDate(new Timestamp(System.currentTimeMillis()));
+                    bid.setUser(user);
+                    ad.getBids().add(bid);
+
+                    ads.edit(ad);
+
+                    response.sendRedirect("/marktplaats-war/ads/show?id=" + ad.getId());
+                
+                } else {
+                    
+                    request.setAttribute("errorMsg", "Bod moet hoger zijn dan het hoogste bod.");
+                    getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response);
+                    
+                }
+                
                 
             } else {
                 
-                
+                int i = 0;
                 
             }
             
