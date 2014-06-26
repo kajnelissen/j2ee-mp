@@ -6,9 +6,12 @@
 
 package nl.rkk.marktplaats.facades;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import nl.rkk.marktplaats.models.Ad;
 import nl.rkk.marktplaats.models.Bid;
 
 /**
@@ -27,6 +30,15 @@ public class BidFacade extends AbstractFacade<Bid> implements BidFacadeLocal {
 
     public BidFacade() {
         super(Bid.class);
+    }
+    
+    @Override
+    public List<Bid> findForAd(Ad ad) {
+        return this.em.createQuery("SELECT b FROM Bid b WHERE b.ad_id = :adId", Bid.class).setParameter("adId", ad.getId()).getResultList();
+        //TypedQuery<Bid> query = this.em.createNamedQuery("Bid.findForAd", Bid.class);
+        //query.setParameter("adId", ad.getId());
+        //return null;
+        //return query.getResultList();
     }
     
 }

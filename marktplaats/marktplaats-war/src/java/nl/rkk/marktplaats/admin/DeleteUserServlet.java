@@ -68,29 +68,37 @@ public class DeleteUserServlet extends HttpServlet {
         MyUser user = (MyUser) request.getSession().getAttribute("currentUser");
         String param = request.getParameter("id");
         
-        if ( user.getType() == UserRole.Admin ) { 
+        if ( user == null ) {
             
-            if ( param != null ) {
-                Integer userId = Integer.parseInt(param);
-                MyUser deleteUser = this.users.find(userId);
-                
-                if ( deleteUser == null ) {
-                    request.setAttribute("errorMsg", "Geen gebruiker gevonden met id = " + param + "!");
-                } else if ( deleteUser.getType() == UserRole.Admin ) {
-                    request.setAttribute("errorMsg", "Je kunt geen beheerders verwijderen!");
-                } else {
-                    this.users.remove(deleteUser);
-                    request.setAttribute("notification", "Gebruiker met e-mailadres \"" + deleteUser.getEmail() + "\" is verwijderd!");
-                }     
-                
-            } else {
-                request.setAttribute("errorMsg", "Kan geen gebruiker verwijderen: geen userId gevonden.");
-            }
+            response.sendRedirect("/marktplaats-war/login");
             
-            request.getRequestDispatcher("/admin/users.jsp").forward(request, response);
-        }
+        } else {
         
-        response.sendRedirect("/marktplaats-war");
+            if ( user.getType() == UserRole.Admin ) { 
+
+                if ( param != null ) {
+                    Integer userId = Integer.parseInt(param);
+                    MyUser deleteUser = this.users.find(userId);
+
+                    if ( deleteUser == null ) {
+                        request.setAttribute("errorMsg", "Geen gebruiker gevonden met id = " + param + "!");
+                    } else if ( deleteUser.getType() == UserRole.Admin ) {
+                        request.setAttribute("errorMsg", "Je kunt geen beheerders verwijderen!");
+                    } else {
+                        this.users.remove(deleteUser);
+                        request.setAttribute("notification", "Gebruiker met e-mailadres \"" + deleteUser.getEmail() + "\" is verwijderd!");
+                    }     
+
+                } else {
+                    request.setAttribute("errorMsg", "Kan geen gebruiker verwijderen: geen userId gevonden.");
+                }
+
+                request.getRequestDispatcher("/admin/users.jsp").forward(request, response);
+            }
+
+            response.sendRedirect("/marktplaats-war");
+            
+        }
         
     }
 

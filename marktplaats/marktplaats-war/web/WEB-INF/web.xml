@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>DeleteAdServlet</servlet-name>
-        <servlet-class>nl.rkk.marktplaats.servlets.ads.DeleteAdServlet</servlet-class>
+        <servlet-class>nl.rkk.marktplaats.admin.DeleteAdServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateBidServlet</servlet-name>
@@ -98,7 +98,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateBidServlet</servlet-name>
-        <url-pattern>/ads/bids/create</url-pattern>
+        <url-pattern>/bids/create</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteBidServlet</servlet-name>

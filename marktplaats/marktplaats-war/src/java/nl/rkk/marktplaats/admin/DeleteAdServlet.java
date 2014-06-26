@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 
-package nl.rkk.marktplaats.servlets.ads;
+package nl.rkk.marktplaats.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import nl.rkk.marktplaats.facades.AdFacadeLocal;
+import nl.rkk.marktplaats.models.Ad;
+import nl.rkk.marktplaats.models.MyUser;
+import nl.rkk.marktplaats.models.UserRole;
 
 /**
  *
  * @author Kaj
  */
 public class DeleteAdServlet extends HttpServlet {
+    
+    @EJB
+    private AdFacadeLocal ads;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +65,40 @@ public class DeleteAdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        MyUser user = (MyUser) request.getSession().getAttribute("currentUser");
+        String param = request.getParameter("adId");
+        
+        if ( user == null ) {
+            
+            response.sendRedirect("/marktplaats-war/login");
+            
+        } else {
+        
+            if ( user.getType() == UserRole.Admin ) { 
+
+                if ( param != null ) {
+                    Integer adId = Integer.parseInt(param);
+                    Ad deleteAd = this.ads.find(adId);
+
+                    if ( deleteAd == null ) {
+                        request.setAttribute("errorMsg", "Geen advertentie gevonden met id = " + param + "!");
+                    } else {
+                        this.ads.remove(deleteAd);
+                        request.setAttribute("notification", "Advertentie \"" + deleteAd.getTitle() + "\" is verwijderd!");
+                    }     
+
+                } else {
+                    request.setAttribute("errorMsg", "Kan geen advertentie verwijderen: geen adId gevonden.");
+                }
+
+                request.getRequestDispatcher("/ads/ads.jsp").forward(request, response);
+            }
+
+            response.sendRedirect("/marktplaats-war");
+            
+        }
+        
     }
 
     /**

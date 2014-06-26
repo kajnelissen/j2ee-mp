@@ -7,12 +7,15 @@
 package nl.rkk.marktplaats.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -20,6 +23,9 @@ import javax.persistence.OneToOne;
  * @author Kaj
  */
 @Entity
+@NamedQueries({
+    //@NamedQuery(name = "Bid.findForAd", query = "SELECT b FROM Bid b WHERE b.AD_ID = :adId")
+})
 public class Bid implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -28,7 +34,9 @@ public class Bid implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    private DecimalFormat amount;
+    private Double amount;
+    
+    private Timestamp stamp;
     
     @ManyToOne()
     private Ad ad;
@@ -42,6 +50,38 @@ public class Bid implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public Timestamp getDate() {
+        return stamp;
+    }
+
+    public void setDate(Timestamp stamp) {
+        this.stamp = stamp;
+    }
+
+    public Ad getAd() {
+        return ad;
+    }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
+    }
+
+    public MyUser getUser() {
+        return user;
+    }
+
+    public void setUser(MyUser user) {
+        this.user = user;
     }
 
     @Override

@@ -27,7 +27,7 @@
             <div class="page-block-container clearfix">
                 <div>
                     <c:if test="${not empty sessionScope.currentUser}">
-                        <span>Welkom, ${sessionScope.currentUser.email}</span>
+                        <span>Welkom, ${sessionScope.currentUser.firstName}</span>
                         <a href="/marktplaats-war/logout">Uitloggen</a> 
                         <a href="/marktplaats-war/ads/create">Plaats advertentie</a>  
                         <a href="/marktplaats-war/user/ads">Eigen advertenties</a> 
