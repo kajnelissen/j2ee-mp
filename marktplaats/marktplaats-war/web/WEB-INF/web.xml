@@ -56,6 +56,10 @@
         <servlet-name>EditAdServlet</servlet-name>
         <servlet-class>nl.rkk.marktplaats.servlets.ads.EditAdServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserAdServlet</servlet-name>
+        <servlet-class>nl.rkk.marktplaats.servlets.ads.UserAdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>EditAdServlet</servlet-name>
         <url-pattern>/ads/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserAdServlet</servlet-name>
+        <url-pattern>/user/ads</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

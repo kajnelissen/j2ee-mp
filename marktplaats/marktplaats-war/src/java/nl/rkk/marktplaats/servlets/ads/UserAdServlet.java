@@ -8,6 +8,8 @@ package nl.rkk.marktplaats.servlets.ads;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
 import nl.rkk.marktplaats.models.Ad;
+import nl.rkk.marktplaats.models.MyUser;
 
 /**
  *
- * @author Kaj
+ * @author Roy
  */
-public class DeleteAdServlet extends HttpServlet {
+public class UserAdServlet extends HttpServlet {
     @EJB
     private AdFacadeLocal ads;
     /**
@@ -40,10 +43,10 @@ public class DeleteAdServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteAdServlet</title>");            
+            out.println("<title>Servlet UserAdServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteAdServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserAdServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,13 +65,17 @@ public class DeleteAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        String id = request.getParameter("id");
-        
-        Ad ads = new Ad();
-        ads.setId(Integer.parseInt(id));
-        this.ads.remove(ads);
-        request.setAttribute("ad", ads);
-        getServletContext().getRequestDispatcher("/admin/ads/delete.jsp").forward(request, response);
+        MyUser user = (MyUser) request.getSession(true).getAttribute("currentUser");
+        if ( user == null ) {
+            response.sendRedirect("/marktplaats-war/login");
+        }else{
+             
+            Collection<Ad> ads = user.getAds();
+            request.setAttribute("ads", user.getAds());
+            getServletContext().getRequestDispatcher("/user/ads.jsp").forward(request, response);
+        }
+       
+       
     }
 
     /**

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import nl.rkk.marktplaats.facades.AdFacadeLocal;
+import nl.rkk.marktplaats.facades.MyUserFacadeLocal;
+import nl.rkk.marktplaats.models.Ad;
 import nl.rkk.marktplaats.models.MyUser;
 import nl.rkk.marktplaats.validation.Validator;
 import nl.rkk.marktplaats.validation.ValidatorFactory;
@@ -30,6 +32,9 @@ public class AddAdServlet extends HttpServlet {
     
     @EJB
     private AdFacadeLocal ads;
+    @EJB
+    private MyUserFacadeLocal  myuserFacade;
+            
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -76,7 +81,6 @@ public class AddAdServlet extends HttpServlet {
                 response.sendRedirect("/marktplaats-war/login");
             } else {
                  getServletContext().getRequestDispatcher("/ads/create.jsp").forward(request, response);
-                 
             }
         
     }
@@ -113,9 +117,17 @@ public class AddAdServlet extends HttpServlet {
             String categorie = request.getParameter("categorie");
             String prijs = request.getParameter("prijs");
          
-            ads.create(titel, beschrijving, categorie, Double.parseDouble(prijs.replace(',','.')), user);
-            // advertentie aangemaakt, doorverwezen naar advertentie pagina
-            getServletContext().getRequestDispatcher("/ads/ads.jsp").forward(request, response);   
+            Ad ad = new Ad();
+            ad.setCategory(categorie);
+            ad.setDescription(beschrijving);
+            ad.setTitle(titel);
+            ad.setPrice(Double.parseDouble(prijs.replace(',','.')));
+            user.getAds().add(ad);
+            myuserFacade.edit(user);
+            
+//            ads.create(titel, beschrijving, categorie, Double.parseDouble(prijs.replace(',','.')), user);
+//            user.getAds().add(null)            // advertentie aangemaakt, doorverwezen naar advertentie pagina
+            getServletContext().getRequestDispatcher("/ads/ads").forward(request, response);   
             
         } else {
             

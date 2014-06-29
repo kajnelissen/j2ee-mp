@@ -32,6 +32,5 @@ public interface AdFacadeLocal {
 
     int count();
 
-    public void create(String titel, String beschrijving, String categorie, Double prijs, MyUser user);
     
 }

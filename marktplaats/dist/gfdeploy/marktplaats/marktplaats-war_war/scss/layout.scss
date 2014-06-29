@@ -1,0 +1,552 @@
+body {
+
+	/*background-color: #fff;*/
+        background-color: #DADFE1;
+
+	@media only screen and (min-width: 90em) {
+
+		background-color: #DADFE1;
+		
+	}
+
+}
+
+.page-block-container {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	width: 100%;
+	/*background-color: #ddd;*/
+	margin: auto;
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+        
+        @media only screen and (min-width: 80em) {
+
+		width: 85%;
+		
+	}
+
+	@media only screen and (min-width: 90em) {
+
+		width: 80%;
+		
+	}
+
+	@media only screen and (min-width: 100em) {
+
+		width: 75%;
+		
+	}
+
+}
+
+body > header {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	width: 100%;
+	
+	/*border-bottom: 1px #000 solid;*/
+	/*position: fixed;*/
+	/*z-index: 100;*/
+	background-color: #fff;
+	border-top: 1rem $color-curious-blue solid;
+
+	/*-webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+	-moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+	box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.2);*/
+
+	/*.page-block-container {
+		@include height(5);
+	}*/
+
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		
+		
+	}
+
+}
+
+.logo-top {
+
+	/*
+	 *	Base styles for this element.
+	 */
+    
+    @include height(5);
+    display: block;
+    color: #000;
+    border: none;
+    
+
+    &:hover {
+    	border: none;
+    }
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		float: left;
+		@include width(25);
+		
+	}
+
+}
+
+#top-nav {
+
+	/*
+	 *	Base styles for this element.
+	 */
+	margin: 0;
+
+	
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		background-color: #34495E;
+		text-align: center;
+		@include height(5);
+		@include line-height(5);
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		background-color: #fff;
+		float: right;
+		@include height(5);
+		@include line-height(5);
+		
+	}
+
+}
+
+.user-status-bar {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	width: 100%;
+	background-color: $color-ebony-clay;
+	/*background: #fff;*/
+	color: #BDC3C7;
+	@include height(4);
+	@include line-height(4);
+
+	a {
+		color: #fff;
+		border: none;
+		display: inline-block;
+		padding: 0 1rem;
+		@include height(4);
+		@include line-height(4);
+
+		&:hover {
+			background-color: $color-curious-blue;
+			color: #fff;
+		}
+	}
+
+	span {
+		display: inline-block;
+		padding: 0 1rem 0 0;
+		@include height(4);
+		@include line-height(4);
+	}
+
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		/*@include height(6);*/
+		/*border-top: 1rem #EF4836 solid;*/
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		
+		
+	}
+
+}
+
+main {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	background-color: #fff;
+	padding: 1rem;
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+		width: 100%;
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		/*padding-top: 5rem;*/
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		padding: 1rem;
+		float: left;
+
+	}
+
+	@media only screen and (min-width: 90em) {
+
+		padding: 2rem;
+
+	}
+
+}
+
+.main-container {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	background-color: $color-carrara;
+
+	/*margin: 3rem auto;*/
+	/*margin: 5rem auto;*/
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 90em) {
+		
+		-webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+		-moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+		box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.2);
+		/*margin: 3rem auto;*/
+	}
+
+
+}
+
+.content-container {
+
+	/*
+	 *	Base styles for this element.
+	 */
+	
+	width: 100%;
+	margin-bottom: 0;
+	
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+		/*width: 80%;
+		float: left;*/
+	}
+
+
+}
+
+.sidebar {
+
+	/*
+	 *	Base styles for this element.
+	 */
+
+	
+	/*padding: 1rem;*/
+        width: 100%;
+
+
+	/*
+	 *	Resolution specific styles for this element.
+	 */
+
+	@media only screen and (min-width: 30em) {
+
+		
+
+	}
+
+	@media only screen and (min-width: 40em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 50em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 60em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 70em) {
+
+		
+		
+	}
+
+	@media only screen and (min-width: 80em) {
+
+		float: left;
+		width: 20%;
+		
+	}
+
+}
+
+body > footer {
+
+	color: $color-cascade;
+	padding: 1rem 0;
+        text-align: center;
+}
+
+
+
+.conl {
+	float: left;
+	margin: 0;
+}
+
+.conr {
+	float: right;
+	margin: 0;
+}
+
+.conl, .conr {
+
+	/*border: 1px solid red;*/
+	width: 50%;
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: inline-block;
+		float: left;
+		margin: 0;
+		padding: 0 0.5rem;
+	}
+
+}

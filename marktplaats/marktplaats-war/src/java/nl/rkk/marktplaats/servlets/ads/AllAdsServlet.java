@@ -24,7 +24,7 @@ import nl.rkk.marktplaats.models.Ad;
 public class AllAdsServlet extends HttpServlet {
     
     @EJB
-    private AdFacadeLocal ads;
+    private AdFacadeLocal adFacade;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,7 +64,7 @@ public class AllAdsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Ad> ads = this.ads.findAll();
+        List<Ad> ads = adFacade.findAll();
         request.setAttribute("ads", ads);
         getServletContext().getRequestDispatcher("/ads/ads.jsp").forward(request, response);
     }

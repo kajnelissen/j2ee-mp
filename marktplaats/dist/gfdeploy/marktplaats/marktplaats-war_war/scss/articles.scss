@@ -1,0 +1,159 @@
+article, section {
+
+	p {
+		text-align: justify;
+		clear: both;
+	}
+
+	h1 {
+		@include font-size(2);
+		margin-bottom: 1rem;
+		padding: 2rem;
+		color: #000;
+		border-bottom: 1rem solid $color-curious-blue;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+	h2 {
+		@include font-size(1.5);
+		margin-bottom: 0.5rem;
+		padding: 1rem;
+		color: #000;
+		/*background-color: #67809F;
+		color: #fff;
+		border-radius: $default-radius;*/
+		border-bottom: 1rem solid #F39C12;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+	h3 {
+		@include font-size(1.2);
+		margin-bottom: 0.25rem;
+		padding: 1rem;
+		color: #000;
+		border-bottom: 0.5rem solid #86E2D5;
+
+		a, a:hover {
+
+			color: #000;
+			border: none;
+
+		}
+
+	}
+
+}
+
+/**
+ *	Figures
+ */
+
+figure {
+
+	width: 100%;
+	text-align: center;
+
+	& > figcaption {
+		@include font-size(0.9);
+		padding: 0.5rem 1rem;
+		background-color: #D2D7D3;
+		border-radius: $default-radius;
+		width: auto;
+		margin: 1rem 0;
+	}
+
+	& > img {
+		max-width: 100%;
+		margin: 1rem 0;
+	}
+
+}
+
+figure.left {
+
+	width: initial;
+	float: left;
+	margin: 0 1rem 0 0;
+
+}
+
+figure.right {
+
+	width: initial;
+	float: right;
+	margin: 0 0 0 1rem;
+
+}
+
+blockquote {
+
+	background-color: #C5EFF7;
+	width: 100%;
+	text-align: center;
+	padding: 1rem;
+	border-radius: $default-radius;
+	margin: 1rem 0;
+
+}
+
+.question {
+
+	background-color: #26C281;
+	width: 100%;
+	text-align: center;
+	padding: 1rem 2rem;
+	border-radius: $default-radius;
+	margin: 1rem 0;
+	color: #fff;
+	text-align: left;
+
+}
+
+.author {
+
+	background-color: $color-clouds;
+	border-radius: $default-radius;
+	padding: 1rem;
+
+	& > figure {
+		max-width: 10rem;
+		padding: 0;
+		margin: 0 1rem 0 0;
+		text-align: left;
+
+		img {
+			border-radius: $default-radius * 0.5;
+			margin: 0;
+		}
+	}
+
+	& > h2 {
+		border: none;
+		padding: 0;
+		margin: 0 0 0.5rem 0;
+		@include font-size(1.2);
+	}
+
+	/*& > p {
+		margin: 0;
+		width: auto;
+		float: left;
+		display: inline-block;
+		border: 1px solid #000;
+	}*/
+
+}

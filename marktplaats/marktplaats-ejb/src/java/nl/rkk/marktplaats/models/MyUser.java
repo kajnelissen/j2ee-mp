@@ -50,6 +50,22 @@ public class MyUser implements Serializable {
     
     @OneToMany()
     private Collection<Bid> bids;
+
+    public Collection<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(Collection<Ad> ads) {
+        this.ads = ads;
+    }
+
+    public Collection<Bid> getBids() {
+        return bids;
+    }
+
+    public void setBids(Collection<Bid> bids) {
+        this.bids = bids;
+    }
     
     public MyUser() {
         
