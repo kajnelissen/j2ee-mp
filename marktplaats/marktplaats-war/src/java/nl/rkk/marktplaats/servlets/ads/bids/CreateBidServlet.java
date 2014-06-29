@@ -8,16 +8,35 @@ package nl.rkk.marktplaats.servlets.ads.bids;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import nl.rkk.marktplaats.facades.AdFacadeLocal;
+import nl.rkk.marktplaats.facades.BidFacadeLocal;
+import nl.rkk.marktplaats.models.Ad;
+import nl.rkk.marktplaats.models.Bid;
+import nl.rkk.marktplaats.models.MyUser;
+import nl.rkk.marktplaats.validation.Validator;
+import nl.rkk.marktplaats.validation.ValidatorFactory;
+import nl.rkk.marktplaats.validation.rules.BidRules;
+import nl.rkk.marktplaats.validation.rules.UserRules;
 
 /**
  *
  * @author Kaj
  */
 public class CreateBidServlet extends HttpServlet {
+    
+    @EJB
+    private BidFacadeLocal bids;
+    
+    @EJB
+    private AdFacadeLocal ads;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,7 +90,66 @@ public class CreateBidServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        MyUser user = (MyUser) request.getSession().getAttribute("currentUser");
+        
+        if ( user == null ) {
+            
+            response.sendRedirect("/marktplaats-war/login");
+            
+        } else {
+            
+            Integer adId = Integer.parseInt(request.getParameter("adId"));
+            
+            Dictionary<String, String> input = new Hashtable<>();
+            input.put("amount", request.getParameter("amount"));
+        
+            Validator validator = ValidatorFactory.make(BidRules.rules, input);
+            
+            if ( validator.passes() ) {
+                
+                Ad ad = this.ads.find(adId);
+                
+                if ( ad.getBids().isEmpty() ) {
+                    
+                    Bid bid = new Bid();
+                    bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
+                    bid.setDate(new Timestamp(System.currentTimeMillis()));
+                    bid.setUser(user);
+                    ad.getBids().add(bid);
+
+                    ads.edit(ad);
+
+                    response.sendRedirect("/marktplaats-war/ads/show?id=" + ad.getId());
+                    
+                } else if ( this.bids.isHighest(ad, Double.parseDouble(input.get("amount").replace(',','.'))) ) {
+                
+                    Bid bid = new Bid();
+                    bid.setAmount(Double.parseDouble(input.get("amount").replace(',','.')));
+                    bid.setDate(new Timestamp(System.currentTimeMillis()));
+                    bid.setUser(user);
+                    ad.getBids().add(bid);
+
+                    ads.edit(ad);
+
+                    response.sendRedirect("/marktplaats-war/ads/show?id=" + ad.getId());
+                
+                } else {
+                    
+                    request.setAttribute("errorMsg", "Bod moet hoger zijn dan het hoogste bod.");
+                    getServletContext().getRequestDispatcher("/ads/show.jsp").forward(request, response);
+                    
+                }
+                
+                
+            } else {
+                
+                int i = 0;
+                
+            }
+            
+        }
+        
     }
 
     /**

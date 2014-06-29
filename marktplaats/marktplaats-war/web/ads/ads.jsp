@@ -37,9 +37,9 @@
 
                                 <tr>
                                     <td>${ad.id}</td>
-                                    <td>${ad.title}</td>
+                                    <td><a href="/marktplaats-war/ads/show?id=${ad.id}">${ad.title}</a></td>
                                     <td>${ad.description}</td>
-                                    <td><a href="/marktplaats-war/ads/show?id=${ad.id}">Bekijken</a></td>
+                                    <td><a href="/marktplaats-war/admin/ads/delete?adId=${ad.id}">Verwijderen</a></td>
                                 </tr>
 
                             </c:forEach>

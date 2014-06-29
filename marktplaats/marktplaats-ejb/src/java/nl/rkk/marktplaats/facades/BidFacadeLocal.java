@@ -8,6 +8,7 @@ package nl.rkk.marktplaats.facades;
 
 import java.util.List;
 import javax.ejb.Local;
+import nl.rkk.marktplaats.models.Ad;
 import nl.rkk.marktplaats.models.Bid;
 
 /**
@@ -30,5 +31,11 @@ public interface BidFacadeLocal {
     List<Bid> findRange(int[] range);
 
     int count();
+    
+    List<Bid> findForAd(Ad ad);
+            
+    void create(Bid bid, Ad ad);
+    
+    boolean isHighest(Ad ad,Double amount);
     
 }
